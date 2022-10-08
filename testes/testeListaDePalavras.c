@@ -25,6 +25,11 @@ int main(){
     preencheCadeiaDeCaracteres(p, "string vazia");
     adicionaLinha(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
+    imprimelistapalavras(lista);
+
+    printf("\n\n ->");
+
+    popCelulaListaPalavras(lista);
 
 
     imprimelistapalavras(lista);

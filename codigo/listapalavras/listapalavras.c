@@ -45,18 +45,54 @@ LPCell* criaCelulaListaPalavras(Palavra* palavra){
     return cell;
 
 }
-void popCelula(ListaPalavras *lista){
+void popCelulaListaPalavras(ListaPalavras *lista){
 
+    Pointer aux;
+    Pointer rem;
+    aux = lista->primeiro;
+    while (1)
+    {
+        if (aux->prox->prox == NULL) // eh o ultimo
+        {
+            rem = aux->prox;
+            break;
+        }
+
+        aux = aux->prox;
+    }
+    lista->nItens--;
+    lista->ultimo = aux;
+    aux->prox = NULL;
+    free(rem);
 }
-void removeCelula(ListaPalavras *lista, Palavra *palavra){
+void removeCelulaListaPalavra(ListaPalavras *lista, String palavra){
+    Pointer aux;
+    Pointer rem;
+    aux = lista->primeiro;
+    while (1)
+    {
+        if (aux->prox == NULL) // eh o ultimo
+        {
+            printf("palavra não encontrada");
+            break;
+        }
+        
+
+        aux = aux->prox;
+    }
+    lista->nItens--;
+    lista->ultimo = aux;
+    aux->prox = NULL;
+    free(rem);
 
 }
 void verificaPalavraExisteNaLista(ListaPalavras *lista, String string){
 
 }
 int numeroDePalavras(ListaPalavras *lista){
-
+    return lista->nItens;
 }
+
 void imprimelistapalavras(ListaPalavras *lista){
     if(lista->nItens ==0 && (lista->primeiro == lista->ultimo) &&( lista->primeiro == NULL)){
         puts("lista vazia");

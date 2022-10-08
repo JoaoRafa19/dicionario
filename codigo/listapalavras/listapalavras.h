@@ -31,8 +31,8 @@ typedef struct t_lista_palavras {
 void criaNovaListaDePalavrasVazia(ListaPalavras** lista);
 void inserePalavra(ListaPalavras* lista, LPCell *celula);
 LPCell* criaCelulaListaPalavras(Palavra* palavra);
-void popCelula(ListaPalavras *lista);
-void removeCelula(ListaPalavras *lista, Palavra *palavra);
+void popCelulaListaPalavras(ListaPalavras *lista);
+void removeCelulaListaPalavra(ListaPalavras *lista, String palavra);
 void verificaPalavraExisteNaLista(ListaPalavras *lista, String string);
 int numeroDePalavras(ListaPalavras *lista);
 void imprimelistapalavras(ListaPalavras *lista);
