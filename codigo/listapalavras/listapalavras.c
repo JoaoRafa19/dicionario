@@ -77,7 +77,6 @@ void removeCelulaListaPalavra(ListaPalavras *lista, String palavra){
             break;
         }
         
-
         aux = aux->prox;
     }
     lista->nItens--;
