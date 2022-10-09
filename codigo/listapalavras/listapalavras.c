@@ -1,14 +1,16 @@
 #include "listapalavras.h"
+#include <string.h>
+#include <stdbool.h>
 
-void criaNovaListaDePalavrasVazia(ListaPalavras** lista){
-    (*lista) = (ListaPalavras *) malloc(sizeof(ListaPalavras));
+void criaNovaListaDePalavrasVazia(ListaPalavras **lista)
+{
+    (*lista) = (ListaPalavras *)malloc(sizeof(ListaPalavras));
     (*lista)->nItens = 0;
     (*lista)->primeiro = (*lista)->ultimo = NULL;
-
 }
 
-
-void inserePalavra(ListaPalavras* lista, LPCell* celula){
+void inserePalavra(ListaPalavras *lista, LPCell *celula)
+{
 
     int i;
     Pointer aux;
@@ -35,17 +37,16 @@ void inserePalavra(ListaPalavras* lista, LPCell* celula){
     }
 }
 
-
-
-LPCell* criaCelulaListaPalavras(Palavra* palavra){
-    LPCell *cell = (LPCell *) malloc(sizeof(LPCell));
+LPCell *criaCelulaListaPalavras(Palavra *palavra)
+{
+    LPCell *cell = (LPCell *)malloc(sizeof(LPCell));
     (*cell).palavra = palavra;
     (*cell).prox = NULL;
 
     return cell;
-
 }
-void popCelulaListaPalavras(ListaPalavras *lista){
+void popCelulaListaPalavras(ListaPalavras *lista)
+{
 
     Pointer aux;
     Pointer rem;
@@ -65,36 +66,69 @@ void popCelulaListaPalavras(ListaPalavras *lista){
     aux->prox = NULL;
     free(rem);
 }
-void removeCelulaListaPalavra(ListaPalavras *lista, String palavra){
+void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
+{
     Pointer aux;
     Pointer rem;
     aux = lista->primeiro;
-    while (1)
+    while (true)
     {
         if (aux->prox == NULL) // eh o ultimo
         {
             printf("palavra não encontrada");
             break;
         }
-        
+
         aux = aux->prox;
     }
     lista->nItens--;
     lista->ultimo = aux;
     aux->prox = NULL;
     free(rem);
-
 }
-void verificaPalavraExisteNaLista(ListaPalavras *lista, String string){
 
+/**
+ * @brief Verifica se uma palavra passada como parametro ja existe na lista
+ *
+ * @param lista
+ * @param string
+ */
+int verificaPalavraExisteNaLista(ListaPalavras *lista, String string)
+{
+
+    int i;
+    Pointer aux;
+    aux = lista->primeiro;
+    for (aux = lista->primeiro; aux != NULL; aux=aux->prox)
+    {
+        
+        if(compareString(string, aux->palavra->palavra)){
+            return true;
+        }
+    }
+    return false;
 }
-int numeroDePalavras(ListaPalavras *lista){
+
+
+int compareString(String s1, String s2){
+    if(strlen(s1) != strlen(s2)) return false;
+    int i;
+    for (i = 0; i < strlen(s1); i ++){
+        if(s1[i] != s2[i]) return false;
+    }
+    return true;
+}
+
+int numeroDePalavras(ListaPalavras *lista)
+{
     return lista->nItens;
 }
 
-void imprimelistapalavras(ListaPalavras *lista){
-    if(lista->nItens ==0 && (lista->primeiro == lista->ultimo) &&( lista->primeiro == NULL)){
-        puts("lista vazia");
+void imprimelistapalavras(ListaPalavras *lista, FILE* output)
+{
+    if (lista->nItens == 0 && (lista->primeiro == lista->ultimo) && (lista->primeiro == NULL))
+    {
+        fputs("lista vazia", output);
         return;
     }
     int i;
@@ -107,11 +141,12 @@ void imprimelistapalavras(ListaPalavras *lista){
         if (aux->prox == NULL)
         {
 
-            imprimePalavra(aux->palavra);
+            imprimePalavra(aux->palavra, output);
             break;
         }
-        imprimePalavra(aux->palavra);
-        
+        imprimePalavra(aux->palavra, output);
+
         aux = aux->prox;
     }
+    
 }

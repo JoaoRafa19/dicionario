@@ -25,4 +25,4 @@ void preencheCadeiaDeCaracteres(Palavra *palavra, char * string);
 void adicionaLinha (Palavra* palavra, Linha linha);
 String retornaCadeiaDeCaracteres(Palavra *palavra);
 void imprimeCadeiaDeCaracteres(Palavra *palavra);
-void imprimePalavra(Palavra *palavra);
+void imprimePalavra(Palavra *palavra, FILE *output);

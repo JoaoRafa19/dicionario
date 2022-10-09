@@ -86,16 +86,16 @@ void adicionarCelula(Lista *lista, TCelula *item)
  * 
  * @param l 
  */
-void imprimeLista(Lista *l)
+void imprimeLista(Lista *list)
 {
-    if (l->nItens == 0)
+    if (list->nItens == 0)
     {
         printf("Lista vazia\n");
         return;
     }
     int i;
     Apontador aux;
-    aux = l->pPrimeiro;
+    aux = list->pPrimeiro;
 
     while (1)
     {

@@ -1,5 +1,5 @@
 #include "../codigo/listapalavras/listapalavras.h"
-
+#include <string.h>
 
 
 int main(){
@@ -7,7 +7,7 @@ int main(){
     ListaPalavras *lista;
     Palavra *p;
     criaNovaListaDePalavrasVazia(&lista);
-    imprimelistapalavras(lista); // lista vazia
+    // imprimelistapalavras(lista); // lista vazia
 
     p = criapalavra();
     preencheCadeiaDeCaracteres(p, "teste abc");
@@ -25,14 +25,17 @@ int main(){
     preencheCadeiaDeCaracteres(p, "string vazia");
     adicionaLinha(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
-    imprimelistapalavras(lista);
+    imprimelistapalavras(lista, stdout);
 
-    printf("\n\n ->");
+    
+    printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia"));
+    
+    
 
     popCelulaListaPalavras(lista);
 
 
-    imprimelistapalavras(lista);
+    imprimelistapalavras(lista, stdout);
 
     return 0;
 }

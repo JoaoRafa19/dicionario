@@ -4,9 +4,9 @@
 #include "../listapalavras/listapalavras.h"
 
 /**
- * @note sobrescreve 
+ * @note sobrescreve
  * @warning sobrescreve a palavra anterior
- * 
+ *
  * @brief Cria uma palavra na memória HEAP e escreve no endereço de memória passado como parâmetro
  * @param palavra Endereço de memória onde deve ser criada a palavra
  */
@@ -72,10 +72,14 @@ void imprimeCadeiaDeCaracteres(Palavra *palavra)
 /**
  * @brief cadeia de caracteres + TAD Lista de Números de
 linha)
- * @param palavra
+ * @param palavra Palavra *
+ * @param output FILE *
  */
-void imprimePalavra(Palavra *palavra)
+void imprimePalavra(Palavra *palavra, FILE *output)
 {
-    printf("%s ->", palavra->palavra);
+    if (output == NULL)
+        printf("%s ->", palavra->palavra);
+
+    fprintf(output, "%s", palavra->palavra);
     imprimeLista(palavra->lista);
 }
