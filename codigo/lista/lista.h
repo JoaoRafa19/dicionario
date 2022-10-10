@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int Linha;
 
 typedef struct
 {
-  Linha linha;
+  int linha;
   
 } Titem;
 typedef struct sCelula *PsCelula;
@@ -14,7 +13,7 @@ typedef struct sCelula
 {
   Titem Item;
   PsCelula pProx; /* Apontador pProx; */
-} Celula;
+} CelulaLista;
 
 typedef struct slista
 {
@@ -22,13 +21,13 @@ typedef struct slista
   PsCelula pPrimeiro;
   PsCelula pUltimo;
 
-} Lista;
+} ListaDeOcorrencias;
 
-void fazListaVazia(Lista **);
-Titem criaTitem(Linha linha);
-Celula *criaCelula(Titem item);
-void adicionarCelula(Lista *lista, Celula *item);
-void imprimeLista(Lista *l);
-void popCelula(Lista *l);
-void nitems(Lista *l, int *pres, FILE* output);
-int listaEhVazia(Lista *lista);
+void fazListaVazia(ListaDeOcorrencias **);
+Titem criaTitem(int linha);
+CelulaLista *criaCelula(Titem item);
+void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item);
+void imprimeLista(ListaDeOcorrencias *l);
+void removeUltimaCelula(ListaDeOcorrencias *l);
+void nitems(ListaDeOcorrencias *l, int *pres, FILE* output);
+int listaEhVazia(ListaDeOcorrencias *lista);

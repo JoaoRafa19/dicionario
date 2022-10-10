@@ -11,7 +11,7 @@ void criaPalavraVazia(Palavra **palavra)
 {
 
     (*palavra) = (Palavra *)malloc(sizeof(Palavra));
-    (*palavra)->palavra = NULL;
+    (*palavra)->string = NULL;
     fazListaVazia(&(*palavra)->lista);
 }
 
@@ -23,7 +23,7 @@ Palavra *criapalavra()
 {
     Palavra *p;
     p = (Palavra *)malloc(sizeof(Palavra));
-    p->palavra = NULL;
+    p->string = NULL;
     fazListaVazia(&(p->lista));
     return p;
 }
@@ -37,14 +37,14 @@ Palavra *criapalavra()
  */
 void preencheCadeiaDeCaracteres(Palavra *palavra, String string)
 {
-    palavra->palavra = (String)malloc(strlen(string) * sizeof(char));
-    strcpy(palavra->palavra, string);
+    palavra->string = (String)malloc(strlen(string) * sizeof(char));
+    strcpy(palavra->string, string);
 }
 
 /// @brief Adiciona cada linha à lista de linhas em que a palavra aparece
 /// @param palavra 
 /// @param linha 
-void adicionaLinha(Palavra *palavra, Linha linha)
+void adicionaOcorrecia(Palavra *palavra, int linha)
 {
     adicionarCelula(palavra->lista, criaCelula(criaTitem(linha)));
 }
@@ -57,7 +57,7 @@ void adicionaLinha(Palavra *palavra, Linha linha)
  */
 String retornaCadeiaDeCaracteres(Palavra *palavra)
 {
-    return palavra->palavra;
+    return palavra->string;
 }
 
 /**
@@ -78,8 +78,8 @@ linha)
 void imprimePalavra(Palavra *palavra, FILE *output)
 {
     if (output == NULL)
-        printf("%s ->", palavra->palavra);
+        printf("%s ->", palavra->string);
 
-    fprintf(output, "%s ->", palavra->palavra);
+    fprintf(output, "%s ->", palavra->string);
     imprimeLista(palavra->lista);
 }

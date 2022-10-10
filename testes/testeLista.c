@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
+#include "../codigo/lista/lista.h"
 
 int main()
 {
-  Lista* lista;
+  ListaDeOcorrencias* lista;
 
   fazListaVazia(&lista);
   imprimeLista(lista);
 
    
-  Celula * cell = criaCelula(criaTitem(10));
+  CelulaLista * cell = criaCelula(criaTitem(10));
   adicionarCelula(lista, cell);
    cell = criaCelula(criaTitem(1200));
   adicionarCelula(lista, cell);
@@ -20,13 +20,17 @@ int main()
   cell = criaCelula(criaTitem(13));
   adicionarCelula(lista, cell);
   imprimeLista(lista); //
-  popCelula(lista);
+  removeUltimaCelula(lista);
+  imprimeLista(lista); //
+  removeUltimaCelula(lista);
+  removeUltimaCelula(lista);
+  removeUltimaCelula(lista);
   imprimeLista(lista); //
 
-  FILE *f;
-  f = fopen("teste.txt", "w");
-  nitems(lista, NULL,  stdout);
-  nitems(lista, NULL, f);
+  // FILE *f;
+  // f = fopen("teste.txt", "w");
+  // nitems(lista, NULL,  stdout);
+  // nitems(lista, NULL, f);
   
   return 0;
 

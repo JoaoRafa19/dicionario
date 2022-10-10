@@ -102,7 +102,7 @@ int verificaPalavraExisteNaLista(ListaPalavras *lista, String string)
     for (aux = lista->primeiro; aux != NULL; aux=aux->prox)
     {
         
-        if(compareString(string, aux->palavra->palavra)){
+        if(compareString(string, aux->palavra->string)){
             return true;
         }
     }

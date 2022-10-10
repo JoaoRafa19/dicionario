@@ -12,10 +12,7 @@ void criaPalavraDictVazia(PalavraDict ** palavraDict, char letra)
 
 
 void adicionaPalavraDict(Dicionario *,  PalavraDict * palavraDict);
-void strip(char *);
-
-
-
+void removeTablaturasEFimDeLinha(char *);
 
 
 /**
@@ -25,40 +22,41 @@ void strip(char *);
  */
 void controiDicionario(String filename, Dicionario *dict){
 
-    FILE* input_file = fopen(filename, "r");
-    if (!input_file)
+    FILE* file = fopen(filename, "r");
+    if (!file)
         exit(EXIT_FAILURE);
 
     char *contents = NULL;
-    int line = 0;
+    int line = 1;
     size_t len = 0;
-    while (getline(&contents, &len, input_file) != EOF){
-          
-        char * pch;
-        pch = strtok (contents," ");
-        while (pch != NULL)
-        {
+    while (getline(&contents, &len, file) != EOF){
 
-            
+        char * palavraSeparadaPorEspacos;
+        // contents = "o pato viu a vela e ficou com medo do fogo pois a vela era quente"
+        palavraSeparadaPorEspacos = strtok(contents," ");
+        
+
+        while (palavraSeparadaPorEspacos != NULL)
+        {
             
             Palavra *p;
             criaPalavraVazia(&p);
 
-            strip(pch);
-            preencheCadeiaDeCaracteres(p, pch);
-            adicionaLinha(p, line);
+            removeTablaturasEFimDeLinha(palavraSeparadaPorEspacos);
+            preencheCadeiaDeCaracteres(p, palavraSeparadaPorEspacos);
+            adicionaOcorrecia(p, line);
             imprimePalavra(p, stdout);
 
             
 
             //adicionar palavra ao dicionario
-            pch = strtok (NULL, " ");
+            palavraSeparadaPorEspacos = strtok (NULL, " ");
         }
                 
         line ++;
     }
 
-    fclose(input_file);
+    fclose(file);
     free(contents);
 
     exit(EXIT_SUCCESS);
@@ -66,11 +64,11 @@ void controiDicionario(String filename, Dicionario *dict){
 }
 
 /**
- * @brief Função que remove tablaturas e fim de linha de uma string
+ * @brief Remove tabs e fim de linha de uma string
  * 
  * @param s 
  */
-void strip(String s) {
+void removeTablaturasEFimDeLinha(String s) {
     String p2 = s;
     while(*s != '\0') {
         if(*s != '\t' && *s != '\n') {
@@ -82,6 +80,11 @@ void strip(String s) {
     *p2 = '\0';
 }
 
+/**
+ * @brief Cria um dicionario novo na memória
+ * 
+ * @param dict 
+ */
 void inicializaDicionario(Dicionario ** dict){
     (*dict) = (Dicionario *) malloc(sizeof(Dicionario));
     (*dict)->nitens = 0;

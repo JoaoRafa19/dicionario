@@ -12,19 +12,19 @@ int main(){
     //p = criapalavra();
     criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste abc");
-    adicionaLinha(p, 10);
-    adicionaLinha(p, 25);
-    adicionaLinha(p, 15);
+    adicionaOcorrecia(p, 10);
+    adicionaOcorrecia(p, 25);
+    adicionaOcorrecia(p, 15);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
     criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste string");
-    adicionaLinha(p, 14);
+    adicionaOcorrecia(p, 14);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
     criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "string vazia");
-    adicionaLinha(p, 11);
+    adicionaOcorrecia(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
     imprimelistapalavras(lista, stdout);
 

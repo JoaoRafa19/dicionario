@@ -7,10 +7,10 @@
  * 
  * @param lista 
  */
-void fazListaVazia(Lista **lista)
+void fazListaVazia(ListaDeOcorrencias **lista)
 {
 
-    (*lista) = (Lista *)malloc(sizeof(Lista));
+    (*lista) = (ListaDeOcorrencias *)malloc(sizeof(ListaDeOcorrencias));
     if ((*lista) == NULL)
     {
         printf("deu erro");
@@ -40,9 +40,9 @@ Titem criaTitem(int line)
  * @param item Parametro por cópia que será copiado dentro da TCelula criada
  * @return TCelula*
  */
-Celula *criaCelula(Titem item)
+CelulaLista *criaCelula(Titem item)
 {
-    Celula *celula = (Celula *)malloc(sizeof(Celula));
+    CelulaLista *celula = (CelulaLista *)malloc(sizeof(CelulaLista));
     (*celula).Item = item;
     (*celula).pProx = NULL;
     return celula;
@@ -54,7 +54,7 @@ Celula *criaCelula(Titem item)
  * @param lista Lista onde a celula deve ser adicionada
  * @param item Ponteiro para a celula que deseja adicionar a lista
  */
-void adicionarCelula(Lista *lista, Celula *item)
+void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 {
     int i;
     PsCelula aux;
@@ -87,9 +87,9 @@ void adicionarCelula(Lista *lista, Celula *item)
  * 
  * @param l 
  */
-void imprimeLista(Lista *list)
+void imprimeLista(ListaDeOcorrencias *list)
 {
-    if (list->nItens == 0)
+    if (listaEhVazia(list))
     {
         printf("Lista vazia\n");
         return;
@@ -119,14 +119,18 @@ void imprimeLista(Lista *list)
  * 
  * @param l 
  */
-void popCelula(Lista *l)
+void removeUltimaCelula(ListaDeOcorrencias *l)
 {
+    if(listaEhVazia(l)) return;
     PsCelula aux;
     PsCelula rem;
     aux = l->pPrimeiro;
-    if(listaEhVazia(l)) return;
     while (1)
-    {
+    {   
+        if(aux->pProx == NULL){
+            rem = aux;
+            break;
+        }
         if (aux->pProx->pProx == NULL) // eh o ultimo
         {
             rem = aux->pProx;
@@ -140,7 +144,7 @@ void popCelula(Lista *l)
     free(rem);
 }
 
-int listaEhVazia(Lista *lista){
+int listaEhVazia(ListaDeOcorrencias *lista){
     return (lista->nItens == 0 && (( lista->pPrimeiro == lista->pUltimo) && (lista->pUltimo == NULL) ));
 }
 
@@ -151,7 +155,7 @@ int listaEhVazia(Lista *lista){
  * @param pres parametro de retorno opcional
  * @param output stream de saída (arquivo ou saida padrão)
  */
-void nitems(Lista *l, int *pres, FILE* output)
+void nitems(ListaDeOcorrencias *l, int *pres, FILE* output)
 {   
     if(output != NULL){
         fprintf(output, "%d", l->nItens);
