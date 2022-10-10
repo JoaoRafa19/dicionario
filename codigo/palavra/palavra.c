@@ -4,9 +4,6 @@
 #include "../listapalavras/listapalavras.h"
 
 /**
- * @note sobrescreve
- * @warning sobrescreve a palavra anterior
- *
  * @brief Cria uma palavra na memória HEAP e escreve no endereço de memória passado como parâmetro
  * @param palavra Endereço de memória onde deve ser criada a palavra
  */
@@ -15,7 +12,7 @@ void criaPalavraVazia(Palavra **palavra)
 
     (*palavra) = (Palavra *)malloc(sizeof(Palavra));
     (*palavra)->palavra = NULL;
-    FLVazia(&(*palavra)->lista);
+    fazListaVazia(&(*palavra)->lista);
 }
 
 /**
@@ -27,7 +24,7 @@ Palavra *criapalavra()
     Palavra *p;
     p = (Palavra *)malloc(sizeof(Palavra));
     p->palavra = NULL;
-    FLVazia(&(p->lista));
+    fazListaVazia(&(p->lista));
     return p;
 }
 
@@ -44,6 +41,9 @@ void preencheCadeiaDeCaracteres(Palavra *palavra, String string)
     strcpy(palavra->palavra, string);
 }
 
+/// @brief Adiciona cada linha à lista de linhas em que a palavra aparece
+/// @param palavra 
+/// @param linha 
 void adicionaLinha(Palavra *palavra, Linha linha)
 {
     adicionarCelula(palavra->lista, criaCelula(criaTitem(linha)));
@@ -80,6 +80,6 @@ void imprimePalavra(Palavra *palavra, FILE *output)
     if (output == NULL)
         printf("%s ->", palavra->palavra);
 
-    fprintf(output, "%s", palavra->palavra);
+    fprintf(output, "%s ->", palavra->palavra);
     imprimeLista(palavra->lista);
 }

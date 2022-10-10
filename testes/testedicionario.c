@@ -1,10 +1,11 @@
-#include "dicionario.h"
+#include "../codigo/dicionario/dicionario.h"
 
 
 
 int main(){
-
-    readFile("./text/input.txt");
+    Dicionario *dict;
+    inicializaDicionario(&dict);
+    controiDicionario("./text/input.txt", dict);
 
     return 0;
 }

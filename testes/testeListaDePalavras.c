@@ -9,19 +9,20 @@ int main(){
     criaNovaListaDePalavrasVazia(&lista);
     // imprimelistapalavras(lista); // lista vazia
 
-    p = criapalavra();
+    //p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste abc");
     adicionaLinha(p, 10);
     adicionaLinha(p, 25);
     adicionaLinha(p, 15);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
-    p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste string");
     adicionaLinha(p, 14);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
-    p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "string vazia");
     adicionaLinha(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));

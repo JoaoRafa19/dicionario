@@ -8,26 +8,27 @@ typedef struct
   Linha linha;
   
 } Titem;
+typedef struct sCelula *PsCelula;
 
-typedef struct Celula
+typedef struct sCelula
 {
   Titem Item;
-  struct Celula *pProx; /* Apontador pProx; */
-} TCelula;
+  PsCelula pProx; /* Apontador pProx; */
+} Celula;
 
-typedef struct Celula *Apontador;
-typedef struct t_lista
+typedef struct slista
 {
   int nItens;
-  Apontador pPrimeiro;
-  Apontador pUltimo;
+  PsCelula pPrimeiro;
+  PsCelula pUltimo;
 
 } Lista;
 
-void FLVazia(Lista **);
+void fazListaVazia(Lista **);
 Titem criaTitem(Linha linha);
-TCelula *criaCelula(Titem item);
-void adicionarCelula(Lista *lista, TCelula *item);
+Celula *criaCelula(Titem item);
+void adicionarCelula(Lista *lista, Celula *item);
 void imprimeLista(Lista *l);
-void popCell(Lista *l);
+void popCelula(Lista *l);
 void nitems(Lista *l, int *pres, FILE* output);
+int listaEhVazia(Lista *lista);

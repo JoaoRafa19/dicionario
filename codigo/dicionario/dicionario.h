@@ -1,14 +1,31 @@
-#include "listapalavras.h"
+#include "../listapalavras/listapalavras.h"
 
-#define STRLEN 100
+typedef struct sPalavraDict * PsPalavraDict;
+
+typedef struct sPalavraDict{
+    char letra;
+    ListaPalavras *lista;
+    PsPalavraDict prox;
+
+} PalavraDict;
+
+typedef PalavraDict* PPalavraDict;
 
 typedef struct
 {
+    PPalavraDict primeiro;
+    PPalavraDict ultimo;
+
+    int nitens;
+
+
 
 } Dicionario;
 
 
 
 
-void readFile(String filename);
-void verifyAndAddWord();
+void inicializaDicionario(Dicionario ** dict);
+void controiDicionario(String filename, Dicionario *dict);
+void exibeListaPorLetra(Dicionario *dict, char * letra);
+void exiteTodasAsPalavras(Dicionario* dict);

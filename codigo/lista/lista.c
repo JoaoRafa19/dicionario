@@ -1,12 +1,13 @@
 
 #include "lista.h"
 
+
 /**
  * @brief Implementação lista encadeada vazia
  * 
  * @param lista 
  */
-void FLVazia(Lista **lista)
+void fazListaVazia(Lista **lista)
 {
 
     (*lista) = (Lista *)malloc(sizeof(Lista));
@@ -39,9 +40,9 @@ Titem criaTitem(int line)
  * @param item Parametro por cópia que será copiado dentro da TCelula criada
  * @return TCelula*
  */
-TCelula *criaCelula(Titem item)
+Celula *criaCelula(Titem item)
 {
-    TCelula *celula = (TCelula *)malloc(sizeof(TCelula));
+    Celula *celula = (Celula *)malloc(sizeof(Celula));
     (*celula).Item = item;
     (*celula).pProx = NULL;
     return celula;
@@ -53,10 +54,10 @@ TCelula *criaCelula(Titem item)
  * @param lista Lista onde a celula deve ser adicionada
  * @param item Ponteiro para a celula que deseja adicionar a lista
  */
-void adicionarCelula(Lista *lista, TCelula *item)
+void adicionarCelula(Lista *lista, Celula *item)
 {
     int i;
-    Apontador aux;
+    PsCelula aux;
     aux = lista->pPrimeiro;
     if (aux == NULL)
     {
@@ -94,7 +95,7 @@ void imprimeLista(Lista *list)
         return;
     }
     int i;
-    Apontador aux;
+    PsCelula aux;
     aux = list->pPrimeiro;
 
     while (1)
@@ -118,11 +119,12 @@ void imprimeLista(Lista *list)
  * 
  * @param l 
  */
-void popCell(Lista *l)
+void popCelula(Lista *l)
 {
-    Apontador aux;
-    Apontador rem;
+    PsCelula aux;
+    PsCelula rem;
     aux = l->pPrimeiro;
+    if(listaEhVazia(l)) return;
     while (1)
     {
         if (aux->pProx->pProx == NULL) // eh o ultimo
@@ -138,6 +140,9 @@ void popCell(Lista *l)
     free(rem);
 }
 
+int listaEhVazia(Lista *lista){
+    return (lista->nItens == 0 && (( lista->pPrimeiro == lista->pUltimo) && (lista->pUltimo == NULL) ));
+}
 
 /**
  * @brief Retorna / imprime o numero de celulas na lista 

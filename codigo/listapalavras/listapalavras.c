@@ -9,11 +9,11 @@ void criaNovaListaDePalavrasVazia(ListaPalavras **lista)
     (*lista)->primeiro = (*lista)->ultimo = NULL;
 }
 
-void inserePalavra(ListaPalavras *lista, LPCell *celula)
+void inserePalavra(ListaPalavras *lista, CelulaListaPalavra *celula)
 {
 
     int i;
-    Pointer aux;
+    PsCelulaListaPalavra aux;
     aux = lista->primeiro;
     if (aux == NULL)
     {
@@ -37,9 +37,9 @@ void inserePalavra(ListaPalavras *lista, LPCell *celula)
     }
 }
 
-LPCell *criaCelulaListaPalavras(Palavra *palavra)
+CelulaListaPalavra *criaCelulaListaPalavras(Palavra *palavra)
 {
-    LPCell *cell = (LPCell *)malloc(sizeof(LPCell));
+    CelulaListaPalavra *cell = (CelulaListaPalavra *)malloc(sizeof(CelulaListaPalavra));
     (*cell).palavra = palavra;
     (*cell).prox = NULL;
 
@@ -48,8 +48,8 @@ LPCell *criaCelulaListaPalavras(Palavra *palavra)
 void popCelulaListaPalavras(ListaPalavras *lista)
 {
 
-    Pointer aux;
-    Pointer rem;
+    PsCelulaListaPalavra aux;
+    PsCelulaListaPalavra rem;
     aux = lista->primeiro;
     while (1)
     {
@@ -68,8 +68,8 @@ void popCelulaListaPalavras(ListaPalavras *lista)
 }
 void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
 {
-    Pointer aux;
-    Pointer rem;
+    PsCelulaListaPalavra aux;
+    PsCelulaListaPalavra rem;
     aux = lista->primeiro;
     while (true)
     {
@@ -97,7 +97,7 @@ int verificaPalavraExisteNaLista(ListaPalavras *lista, String string)
 {
 
     int i;
-    Pointer aux;
+    PsCelulaListaPalavra aux;
     aux = lista->primeiro;
     for (aux = lista->primeiro; aux != NULL; aux=aux->prox)
     {
@@ -132,7 +132,7 @@ void imprimelistapalavras(ListaPalavras *lista, FILE* output)
         return;
     }
     int i;
-    Pointer aux;
+    PsCelulaListaPalavra aux;
     aux = lista->primeiro;
 
     while (1)

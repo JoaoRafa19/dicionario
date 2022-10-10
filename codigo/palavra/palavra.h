@@ -11,7 +11,7 @@
 #include "../lista/lista.h"
 typedef char *String;
 
-typedef struct t_palavra
+typedef struct
 {
 
   String palavra;

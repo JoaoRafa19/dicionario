@@ -10,27 +10,25 @@
 
 #include "../palavra/palavra.h"
 
-typedef struct TLPCell* Pointer;
-typedef struct TLPCell {
+typedef struct sCelulaListaPalavra* PsCelulaListaPalavra;
+typedef struct sCelulaListaPalavra {
 
     Palavra *palavra;
-    Pointer prox;
+    PsCelulaListaPalavra prox;
 
-} LPCell;
+} CelulaListaPalavra;
 
-typedef struct t_lista_palavras {
+typedef struct {
 
     int nItens;
-
-    Pointer primeiro;
-    Pointer ultimo;
+    PsCelulaListaPalavra primeiro;
+    PsCelulaListaPalavra ultimo;
 
 } ListaPalavras;
 
 
 void criaNovaListaDePalavrasVazia(ListaPalavras** lista);
-void inserePalavra(ListaPalavras* lista, LPCell *celula);
-LPCell* criaCelulaListaPalavras(Palavra* palavra);
+void inserePalavra(ListaPalavras* lista, CelulaListaPalavra *celula);
 void popCelulaListaPalavras(ListaPalavras *lista);
 void removeCelulaListaPalavra(ListaPalavras *lista, String palavra);
 int verificaPalavraExisteNaLista(ListaPalavras *lista, String string);

@@ -4,7 +4,7 @@
 
 int main(){
 
-    readFile("./text/input.txt");
+    controiDicionario("./text/input.txt");
 
     return 0;
 }
