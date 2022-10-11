@@ -1,11 +1,11 @@
 #include "../listapalavras/listapalavras.h"
 
-typedef struct sDictSession * PsPalavraDict;
+typedef struct sDictSession * PsDictSession;
 
 typedef struct sDictSession{
     char letra;
     ListaPalavras *lista;
-    PsPalavraDict prox;
+    PsDictSession prox;
 
 } DictSession;
 
