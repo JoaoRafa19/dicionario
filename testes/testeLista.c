@@ -7,7 +7,7 @@ int main()
   ListaDeOcorrencias* lista;
 
   fazListaVazia(&lista);
-  imprimeLista(lista);
+  imprimeLista(lista, stdout);
 
    
   CelulaLista * cell = criaCelula(criaTitem(10));
@@ -16,16 +16,16 @@ int main()
   adicionarCelula(lista, cell);
    cell = criaCelula(criaTitem(2));
   adicionarCelula(lista, cell);
-  imprimeLista(lista); //
+  imprimeLista(lista, stdout); //
   cell = criaCelula(criaTitem(13));
   adicionarCelula(lista, cell);
-  imprimeLista(lista); //
+  imprimeLista(lista, stdout); //
   removeUltimaCelula(lista);
-  imprimeLista(lista); //
+  imprimeLista(lista, stdout); //
   removeUltimaCelula(lista);
   removeUltimaCelula(lista);
   removeUltimaCelula(lista);
-  imprimeLista(lista); //
+  imprimeLista(lista, stdout); //
 
   // FILE *f;
   // f = fopen("teste.txt", "w");

@@ -5,7 +5,7 @@
 /**
  * @brief Implementação lista encadeada vazia
  * 
- * @param lista 
+ * @param lista ListaDeOcorrencias **
  */
 void fazListaVazia(ListaDeOcorrencias **lista)
 {
@@ -22,7 +22,7 @@ void fazListaVazia(ListaDeOcorrencias **lista)
 /*
  * @brief cria um Titem
  *
- * @param line integer value for the line
+ * @param line int
  * @retval Retorna um Titem com a linha passada como parametro
  * @return Titem*
  */
@@ -39,6 +39,7 @@ Titem criaTitem(int line)
  *
  * @param item Parametro por cópia que será copiado dentro da TCelula criada
  * @return TCelula*
+ * @retval Retorna a celula a ser adicionada na lista
  */
 CelulaLista *criaCelula(Titem item)
 {
@@ -47,24 +48,12 @@ CelulaLista *criaCelula(Titem item)
     (*celula).pProx = NULL;
     return celula;
 }
-int itemExiste(ListaDeOcorrencias * lista, int item){
-    PsCelula aux;
-    aux = lista->pPrimeiro;
-    if(aux->pProx == NULL)return 0;
-    do{
-        if(aux->Item.linha == item){
-            return 1;
-        }
-        aux = aux->pProx;
-    }while(aux->pProx != NULL);
-    return 0;
-}
 
 /**
  * @brief Adiciona uma Celula a lista
  *
- * @param lista Lista onde a celula deve ser adicionada
- * @param item Ponteiro para a celula que deseja adicionar a lista
+ * @param lista ListaDeOcorrencias *
+ * @param item CelulaLista *
  */
 void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 {
@@ -76,13 +65,15 @@ void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
         lista->pPrimeiro = lista->pUltimo = item;
         lista->nItens++;
         return;
-    }else if(itemExiste(lista, item->Item.linha)){
-        return;
     }
+    
     else
     {
         while (1)
         {
+            if(aux->Item.linha == item->Item.linha ){
+                return; //sem repetição
+            }
             if (aux->pProx == NULL)
             {
                 break;
@@ -100,9 +91,10 @@ void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 /**
  * @brief Imprime na saida padrão a lista de Titems
  * 
- * @param l 
+ * @param list ListaDeOcorrencias *
+ * @param output FILE *
  */
-void imprimeLista(ListaDeOcorrencias *list)
+void imprimeLista(ListaDeOcorrencias *list, FILE *output)
 {
     if (listaEhVazia(list))
     {
@@ -112,7 +104,7 @@ void imprimeLista(ListaDeOcorrencias *list)
     int i;
     PsCelula aux;
     aux = list->pPrimeiro;
-    printf("Linhas: ");
+    fprintf(output, "Linhas: ");
     while (1)
     {
 
@@ -120,23 +112,23 @@ void imprimeLista(ListaDeOcorrencias *list)
         {
 
             if(list->nItens == 1){
-                printf("|%d|", aux->Item.linha);
+                fprintf(output, "|%d|", aux->Item.linha);
             }else{
-                printf("%d|", aux->Item.linha);
+                fprintf(output, "%d|", aux->Item.linha);
             }
             break;
         }
-        printf("|%d|", aux->Item.linha);
+        fprintf(output, "|%d|", aux->Item.linha);
 
         aux = aux->pProx;
     }
-    printf("\n");
+    fprintf(output,"\n");
 }
 
 /**
  * @brief Remove a ultima celula da lisa encadiada
  * 
- * @param l 
+ * @param l ListaDeOcorrencias *
  */
 void removeUltimaCelula(ListaDeOcorrencias *l)
 {
@@ -163,25 +155,33 @@ void removeUltimaCelula(ListaDeOcorrencias *l)
     free(rem);
 }
 
+
+ /**
+  * @brief Verifica se a lista é vazia
+  * 
+  * @param lista ListaDeOcorrencias *
+  * @return int bool
+  */
 int listaEhVazia(ListaDeOcorrencias *lista){
     return (lista->nItens == 0 && (( lista->pPrimeiro == lista->pUltimo) && (lista->pUltimo == NULL) ));
 }
 
+
 /**
  * @brief Retorna / imprime o numero de celulas na lista 
  * 
- * @param l lista a 
- * @param pres parametro de retorno opcional
+ * @param lista ListaDeOcorrencias *
+ * @param pres int *
  * @param output stream de saída (arquivo ou saida padrão)
  */
-void nitems(ListaDeOcorrencias *l, int *pres, FILE* output)
+void nitems(ListaDeOcorrencias *lista, int *pres, FILE* output)
 {   
     if(output != NULL){
-        fprintf(output, "%d", l->nItens);
+        fprintf(output, "%d", lista->nItens);
     }
     
     if (pres != NULL)
     {
-        (*pres) = l->nItens;
+        (*pres) = lista->nItens;
     }
 }

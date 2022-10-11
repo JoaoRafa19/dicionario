@@ -2,11 +2,22 @@
 
 
 
+
 int main(){
     Dicionario *dict;
     inicializaDicionario(&dict);
     controiDicionario("./text/input.txt", dict);
-    imprimeDicionario(dict, stdout);
+
+    FILE * arquivo;
+    arquivo = fopen("output2.txt", "w");
+    if(!arquivo){
+        printf("teste");
+    }
+    else{
+        puts("Arquivo");
+        imprimeDicionario(dict, arquivo);
+    }
+    //imprimeDicionario(dict, stdout);
 
     return 0;
 }

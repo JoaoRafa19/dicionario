@@ -13,7 +13,7 @@ int main(){
     printf("%s\n", retornaCadeiaDeCaracteres(p));
     imprimeCadeiaDeCaracteres(p);
 
-    imprimePalavra(p);
+    imprimePalavra(p, stdout);
     
 
 }
