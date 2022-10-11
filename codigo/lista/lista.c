@@ -47,6 +47,18 @@ CelulaLista *criaCelula(Titem item)
     (*celula).pProx = NULL;
     return celula;
 }
+int itemExiste(ListaDeOcorrencias * lista, int item){
+    PsCelula aux;
+    aux = lista->pPrimeiro;
+    if(aux->pProx == NULL)return 0;
+    do{
+        if(aux->Item.linha == item){
+            return 1;
+        }
+        aux = aux->pProx;
+    }while(aux->pProx != NULL);
+    return 0;
+}
 
 /**
  * @brief Adiciona uma Celula a lista
@@ -63,6 +75,8 @@ void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
     {
         lista->pPrimeiro = lista->pUltimo = item;
         lista->nItens++;
+        return;
+    }else if(itemExiste(lista, item->Item.linha)){
         return;
     }
     else
@@ -82,6 +96,7 @@ void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 }
 
 
+
 /**
  * @brief Imprime na saida padrão a lista de Titems
  * 
@@ -97,17 +112,21 @@ void imprimeLista(ListaDeOcorrencias *list)
     int i;
     PsCelula aux;
     aux = list->pPrimeiro;
-
+    printf("Linhas: ");
     while (1)
     {
 
         if (aux->pProx == NULL)
         {
 
-            printf("%d", aux->Item.linha);
+            if(list->nItens == 1){
+                printf("|%d|", aux->Item.linha);
+            }else{
+                printf("%d|", aux->Item.linha);
+            }
             break;
         }
-        printf("%d->", aux->Item.linha);
+        printf("|%d|", aux->Item.linha);
 
         aux = aux->pProx;
     }

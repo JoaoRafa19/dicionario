@@ -46,6 +46,7 @@ void preencheCadeiaDeCaracteres(Palavra *palavra, String string)
 /// @param linha 
 void adicionaOcorrecia(Palavra *palavra, int linha)
 {
+    
     adicionarCelula(palavra->lista, criaCelula(criaTitem(linha)));
 }
 
@@ -77,9 +78,12 @@ linha)
  */
 void imprimePalavra(Palavra *palavra, FILE *output)
 {
+    printf("\n-----------------------\n");
     if (output == NULL)
-        printf("%s ->", palavra->string);
+        printf("Palavra: %s\n", palavra->string);
 
-    fprintf(output, "%s ->", palavra->string);
+    fprintf(output, "Palavra: %s\n", palavra->string);
+    
     imprimeLista(palavra->lista);
+    printf("-----------------------");
 }

@@ -93,7 +93,7 @@ void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
  * @param lista
  * @param string
  */
-int verificaPalavraExisteNaLista(ListaPalavras *lista, String string)
+int verificaPalavraExisteNaLista(ListaPalavras *lista, String string, PsCelulaListaPalavra ref)
 {
 
     int i;
@@ -103,6 +103,9 @@ int verificaPalavraExisteNaLista(ListaPalavras *lista, String string)
     {
         
         if(compareString(string, aux->palavra->string)){
+            if(ref != NULL){
+                (*ref) = (*aux);
+            }
             return true;
         }
     }

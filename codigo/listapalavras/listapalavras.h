@@ -28,10 +28,11 @@ typedef struct {
 
 
 void criaNovaListaDePalavrasVazia(ListaPalavras** lista);
+CelulaListaPalavra *criaCelulaListaPalavras(Palavra *palavra);
 void inserePalavra(ListaPalavras* lista, CelulaListaPalavra *celula);
 void popCelulaListaPalavras(ListaPalavras *lista);
 void removeCelulaListaPalavra(ListaPalavras *lista, String palavra);
-int verificaPalavraExisteNaLista(ListaPalavras *lista, String string);
+int verificaPalavraExisteNaLista(ListaPalavras *, String , CelulaListaPalavra *);
 int numeroDePalavras(ListaPalavras *lista);
 void imprimelistapalavras(ListaPalavras *lista, FILE* output);
 int compareString(String s1, String s2);

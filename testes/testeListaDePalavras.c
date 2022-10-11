@@ -27,9 +27,10 @@ int main(){
     adicionaOcorrecia(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
     imprimelistapalavras(lista, stdout);
-
     
-    printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia"));
+    CelulaListaPalavra cella;
+    
+    printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia", &cella));
     
     
 

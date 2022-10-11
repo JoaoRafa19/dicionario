@@ -3,8 +3,10 @@
 
 
 int main(){
-
-    controiDicionario("./text/input.txt");
+    Dicionario *dict;
+    inicializaDicionario(&dict);
+    controiDicionario("./text/input.txt", &dict);
+    
 
     return 0;
 }
