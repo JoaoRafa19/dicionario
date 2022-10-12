@@ -78,12 +78,12 @@ linha)
  */
 void imprimePalavra(Palavra *palavra, FILE *output)
 {
-    printf("\n-----------------------\n");
+    fputs("-----------------------\n", output);
     if (output == NULL)
         printf("Palavra: %s\n", palavra->string);
 
     fprintf(output, "Palavra: %s\n", palavra->string);
     
-    imprimeLista(palavra->lista);
-    printf("-----------------------");
+    imprimeLista(palavra->lista, output);
+    fputs("-----------------------\n", output);
 }

@@ -118,7 +118,14 @@ void imprimeLista(ListaDeOcorrencias *list, FILE *output)
             }
             break;
         }
+        if(aux == list->pPrimeiro){
+
         fprintf(output, "|%d|", aux->Item.linha);
+        }
+        else{
+
+        fprintf(output, "%d|", aux->Item.linha);
+        }
 
         aux = aux->pProx;
     }

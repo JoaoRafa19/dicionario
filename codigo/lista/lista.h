@@ -27,7 +27,7 @@ void fazListaVazia(ListaDeOcorrencias **);
 Titem criaTitem(int linha);
 CelulaLista *criaCelula(Titem item);
 void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item);
-void imprimeLista(ListaDeOcorrencias *l);
+void imprimeLista(ListaDeOcorrencias *l, FILE*);
 void removeUltimaCelula(ListaDeOcorrencias *l);
 void nitems(ListaDeOcorrencias *l, int *pres, FILE* output);
 int listaEhVazia(ListaDeOcorrencias *lista);

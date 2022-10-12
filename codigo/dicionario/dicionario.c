@@ -1,16 +1,18 @@
 #include "dicionario.h"
 #include "string.h"
+
+
 /**
  * @brief Remove tabs e fim de linha de uma string
  *
- * @param s
+ * @param s String
  */
 void removeTablaturasEFimDeLinha(String s)
 {
     String p2 = s;
     while (*s != '\0')
     {
-        if (*s != '\t' && *s != '\n')
+        if (*s != '\t' && *s != '\n' && *s != '\0' && *s != '\20')
         {
             *p2++ = *s++;
         }
@@ -22,18 +24,31 @@ void removeTablaturasEFimDeLinha(String s)
     *p2 = '\0';
 }
 
-void imprimePalavraDict(DictSession *palavradict, FILE * output )
+
+/**
+ * @brief Imprime a seção da letra no dicionario
+ * 
+ * @param palavradict DictSession *
+ * @param output FILE *
+ */
+void imprimePalavraDict(DictSession *palavradict, FILE *output)
 {
-    puts("\n***********************************");
-    printf("\nLetra : [%c]\n", palavradict->letra);
-    imprimelistapalavras(palavradict->lista, output);
+    if (palavradict->lista->nItens > 0)
+    {
+
+        fputs("***********************************\n", output);
+        fprintf(output, "Letra : [%c]\n\n", palavradict->letra);
+        imprimelistapalavras(palavradict->lista, output);
+        fputs("***********************************\n\n", output);
+
+    }
 }
 
 /**
  * @brief Cria uma PalavraDict e adiciona a letra correspondente
  *
- * @param palavraDict
- * @param letra
+ * @param palavraDict DictSession **
+ * @param letra char
  */
 void criaPalavraDictVazia(DictSession **palavraDict, char letra)
 {
@@ -44,12 +59,12 @@ void criaPalavraDictVazia(DictSession **palavraDict, char letra)
 }
 
 /**
- * @brief Adiciona uma Celula a lista
+ * @brief Adiciona uma DictSession ao dicionario
  *
- * @param lista Lista onde a celula deve ser adicionada
+ * @param dict Dicionario *
  * @param item Ponteiro para a celula que deseja adicionar a lista
  */
-void adicionarPalavraDict(Dicionario *dict, PsPalavraDict item)
+void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
 {
     int i;
     PPalavraDict aux;
@@ -109,12 +124,13 @@ void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
 
         // adicionar palavra ao dicionario
 
-        DictSession * session = (DictSession *) malloc(sizeof(DictSession));
-         
+        DictSession *session = (DictSession *)malloc(sizeof(DictSession));
+
         PsCelulaListaPalavra refCelula;
 
         Palavra *p;
         criaPalavraVazia(&p);
+        removeTablaturasEFimDeLinha(palavraSeparadaPorEspacos);
         preencheCadeiaDeCaracteres(p, palavraSeparadaPorEspacos);
         CelulaListaPalavra *celula = criaCelulaListaPalavras(p);
         if (verificaLetraExisteNoDicionario(palavraSeparadaPorEspacos, dict, session))
@@ -191,6 +207,7 @@ void imprimeDicionario(Dicionario *dict, FILE *output)
 
         aux = aux->prox;
     }
+    
 }
 
 /**
