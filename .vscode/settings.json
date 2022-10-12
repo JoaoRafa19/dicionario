@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "cmath": "c",
+        "stdlib.h": "c",
+        "palavra.h": "c",
+        "lista.h": "c",
+        "stdio.h": "c",
+        "listapalavras.h": "c",
+        "typeinfo": "c",
+        "string.h": "c",
+        "fstream": "c",
+        "istream": "c",
+        "memory": "c",
+        "new": "c",
+        "ostream": "c",
+        "sstream": "c",
+        "type_traits": "c",
+        "dicionario.h": "c",
+        "functional": "c",
+        "tuple": "c"
+    }
+}
