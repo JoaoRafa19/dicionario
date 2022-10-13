@@ -206,12 +206,16 @@ void ordenar(DictSession **primeiro, int tam)
  *
  * @param filename nome do arquivo de deve ser lido
  */
-void controiDicionario(String filename, Dicionario *dict)
+int controiDicionario(String filename, Dicionario *dict)
 {
 
+       
     FILE *file = fopen(filename, "r");
-    if (!file)
-        exit(EXIT_FAILURE);
+    if (!file){
+        puts("arquivo não existe");
+        return 0;
+
+    }
 
     char *contents = NULL;
     int line = 1;
@@ -224,12 +228,12 @@ void controiDicionario(String filename, Dicionario *dict)
         palavraSeparadaPorEspacos = strtok(contents, " ");
 
         adicionaLinha(dict, line, palavraSeparadaPorEspacos);
-
-        line++;
+             line++;
     }
-    ordenar(&(dict->primeiro), dict->nitens);
+    
     fclose(file);
     free(contents);
+    return 1;
 }
 
 void imprimeDicionario(Dicionario *dict, FILE *output)
