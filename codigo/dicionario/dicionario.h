@@ -24,11 +24,8 @@ typedef struct
 
 
 void inicializaDicionario(Dicionario ** dict);
-
-
-int controiDicionario(String filename, Dicionario *dict);
-void exibeListaPorLetra(Dicionario *dict, char * letra);
-void exiteTodasAsPalavras(Dicionario* dict);
-
-
+int constroiDicionario(String filename, Dicionario *dict);
 void imprimeDicionario (Dicionario *dict, FILE* output);
+int verificaLetraExisteNoDicionario(String palavra, Dicionario *dict, PPalavraDict ref);
+void imprimePalavraDict(DictSession *palavradict, FILE *output);
+void mostraTodasAsPalavras(Dicionario *);

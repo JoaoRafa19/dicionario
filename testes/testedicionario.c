@@ -6,7 +6,7 @@
 int main(){
     Dicionario *dict;
     inicializaDicionario(&dict);
-    controiDicionario("./text/input.txt", dict);
+    constroiDicionario("./text/input.txt", dict);
 
     FILE * arquivo;
     arquivo = fopen("output2.txt", "w");

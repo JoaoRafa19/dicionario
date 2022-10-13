@@ -11,7 +11,7 @@ void removeTablaturasEFimDeLinha(String s)
     String p2 = s;
     while (*s != '\0')
     {
-        if (*s != '\t' && *s != '\n' && *s != '\0' && *s != '\20')
+        if (*s != '\t' && *s != '\n' && *s != '\0' && *s != '\20' && *s != '\b' && *s != '\r' && *s != '\v' && *s != '\\' && *s != '\?' && *s != '\'' && *s != '\r')
         {
             *p2++ = *s++;
         }
@@ -76,7 +76,7 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
     {
         while (1)
         {
-            if (aux->prox == NULL) //insere no final
+            if (aux->prox == NULL) // insere no final
             {
                 aux->prox = item;
                 dict->ultimo = item;
@@ -91,10 +91,11 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
                 dict->nitens++;
                 return;
             }
-            if(item->letra < aux->letra){ // insere no inicio
+            if (item->letra < aux->letra)
+            { // insere no inicio
                 item->prox = aux;
                 dict->primeiro = item;
-                dict->nitens ++;
+                dict->nitens++;
                 return;
             }
             aux = aux->prox;
@@ -206,15 +207,13 @@ void ordenar(DictSession **primeiro, int tam)
  *
  * @param filename nome do arquivo de deve ser lido
  */
-int controiDicionario(String filename, Dicionario *dict)
+int constroiDicionario(String filename, Dicionario *dict)
 {
 
-       
     FILE *file = fopen(filename, "r");
-    if (!file){
-        puts("arquivo não existe");
+    if (!file)
+    {
         return 0;
-
     }
 
     char *contents = NULL;
@@ -228,9 +227,9 @@ int controiDicionario(String filename, Dicionario *dict)
         palavraSeparadaPorEspacos = strtok(contents, " ");
 
         adicionaLinha(dict, line, palavraSeparadaPorEspacos);
-             line++;
+        line++;
     }
-    
+
     fclose(file);
     free(contents);
     return 1;
@@ -256,6 +255,66 @@ void imprimeDicionario(Dicionario *dict, FILE *output)
             break;
         }
         imprimePalavraDict(aux, output);
+
+        aux = aux->prox;
+    }
+}
+
+/**
+ * @brief Mostra todas as palavras do TAD Dicionário, na sequência alfabética
+ * @param dict Dicionario *
+ */
+void mostraTodasAsPalavras(Dicionario *dict)
+{
+    if (dict->nitens == 0 && (dict->primeiro == dict->ultimo) && (dict->primeiro == NULL))
+    {
+        puts("Dicionario vazio");
+        return;
+    }
+    int i;
+    PPalavraDict aux;
+    aux = dict->primeiro;
+    PsCelulaListaPalavra aux2;
+
+    while (1)
+    {
+
+        if (aux->prox == NULL)
+        {
+            
+            aux2 = aux->lista->primeiro;
+
+            while (1)
+            {
+
+                if (aux2->prox == NULL)
+                {
+
+                    printf("%s \n", aux2->palavra->string);
+                    break;
+                }
+                printf("%s ", aux2->palavra->string);
+
+                aux2 = aux2->prox;
+            }
+
+            break;
+        }
+        aux2 = aux->lista->primeiro;
+
+        while (1)
+        {
+
+            if (aux2->prox == NULL)
+            {
+
+                printf("%s \n", aux2->palavra->string);
+                break;
+            }
+            printf("%s ", aux2->palavra->string);
+            
+            aux2 = aux2->prox;
+        }
 
         aux = aux->prox;
     }
