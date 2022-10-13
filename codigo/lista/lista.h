@@ -1,33 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int Linha;
 
 typedef struct
 {
-  Linha linha;
+  int linha;
   
 } Titem;
+typedef struct sCelula *PsCelula;
 
-typedef struct Celula
+typedef struct sCelula
 {
   Titem Item;
-  struct Celula *pProx; /* Apontador pProx; */
-} TCelula;
+  PsCelula pProx; /* Apontador pProx; */
+} CelulaLista;
 
-typedef struct Celula *Apontador;
-typedef struct t_lista
+typedef struct slista
 {
   int nItens;
-  Apontador pPrimeiro;
-  Apontador pUltimo;
+  PsCelula pPrimeiro;
+  PsCelula pUltimo;
 
-} Lista;
+} ListaDeOcorrencias;
 
-void FLVazia(Lista **);
-Titem criaTitem(Linha linha);
-TCelula *criaCelula(Titem item);
-void adicionarCelula(Lista *lista, TCelula *item);
-void imprimeLista(Lista *l);
-void popCell(Lista *l);
-void nitems(Lista *l, int *pres, FILE* output);
+void fazListaVazia(ListaDeOcorrencias **);
+Titem criaTitem(int linha);
+CelulaLista *criaCelula(Titem item);
+void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item);
+void imprimeLista(ListaDeOcorrencias *l, FILE*);
+void removeUltimaCelula(ListaDeOcorrencias *l);
+void nitems(ListaDeOcorrencias *l, int *pres, FILE* output);
+int listaEhVazia(ListaDeOcorrencias *lista);

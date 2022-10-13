@@ -1,5 +1,5 @@
 #include "../codigo/listapalavras/listapalavras.h"
-
+#include <string.h>
 
 
 int main(){
@@ -7,32 +7,37 @@ int main(){
     ListaPalavras *lista;
     Palavra *p;
     criaNovaListaDePalavrasVazia(&lista);
-    imprimelistapalavras(lista); // lista vazia
+    // imprimelistapalavras(lista); // lista vazia
 
-    p = criapalavra();
+    //p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste abc");
-    adicionaLinha(p, 10);
-    adicionaLinha(p, 25);
-    adicionaLinha(p, 15);
+    adicionaOcorrecia(p, 10);
+    adicionaOcorrecia(p, 25);
+    adicionaOcorrecia(p, 15);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
-    p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "teste string");
-    adicionaLinha(p, 14);
+    adicionaOcorrecia(p, 14);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
-    p = criapalavra();
+    criaPalavraVazia(&p);
     preencheCadeiaDeCaracteres(p, "string vazia");
-    adicionaLinha(p, 11);
+    adicionaOcorrecia(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
-    imprimelistapalavras(lista);
-
-    printf("\n\n ->");
+    imprimelistapalavras(lista, stdout);
+    
+    CelulaListaPalavra cella;
+    
+    printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia", &cella));
+    
+    
 
     popCelulaListaPalavras(lista);
 
 
-    imprimelistapalavras(lista);
+    imprimelistapalavras(lista, stdout);
 
     return 0;
 }

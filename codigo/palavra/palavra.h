@@ -11,18 +11,17 @@
 #include "../lista/lista.h"
 typedef char *String;
 
-typedef struct t_palavra
+typedef struct
 {
 
-  String palavra;
-  Lista *lista;
+  String string;
+  ListaDeOcorrencias *lista;
 
 } Palavra;
 
 void criaPalavraVazia(Palavra **palavra);
-Palavra *criapalavra();
 void preencheCadeiaDeCaracteres(Palavra *palavra, char * string);
-void adicionaLinha (Palavra* palavra, Linha linha);
+void adicionaOcorrecia (Palavra* palavra, int linha);
 String retornaCadeiaDeCaracteres(Palavra *palavra);
 void imprimeCadeiaDeCaracteres(Palavra *palavra);
-void imprimePalavra(Palavra *palavra);
+void imprimePalavra(Palavra *palavra, FILE *output);

@@ -4,9 +4,6 @@
 #include "../listapalavras/listapalavras.h"
 
 /**
- * @note sobrescreve 
- * @warning sobrescreve a palavra anterior
- * 
  * @brief Cria uma palavra na memória HEAP e escreve no endereço de memória passado como parâmetro
  * @param palavra Endereço de memória onde deve ser criada a palavra
  */
@@ -14,8 +11,8 @@ void criaPalavraVazia(Palavra **palavra)
 {
 
     (*palavra) = (Palavra *)malloc(sizeof(Palavra));
-    (*palavra)->palavra = NULL;
-    FLVazia(&(*palavra)->lista);
+    (*palavra)->string = NULL;
+    fazListaVazia(&(*palavra)->lista);
 }
 
 /**
@@ -26,8 +23,8 @@ Palavra *criapalavra()
 {
     Palavra *p;
     p = (Palavra *)malloc(sizeof(Palavra));
-    p->palavra = NULL;
-    FLVazia(&(p->lista));
+    p->string = NULL;
+    fazListaVazia(&(p->lista));
     return p;
 }
 
@@ -40,12 +37,16 @@ Palavra *criapalavra()
  */
 void preencheCadeiaDeCaracteres(Palavra *palavra, String string)
 {
-    palavra->palavra = (String)malloc(strlen(string) * sizeof(char));
-    strcpy(palavra->palavra, string);
+    palavra->string = (String)malloc(strlen(string) * sizeof(char));
+    strcpy(palavra->string, string);
 }
 
-void adicionaLinha(Palavra *palavra, Linha linha)
+/// @brief Adiciona cada linha à lista de linhas em que a palavra aparece
+/// @param palavra 
+/// @param linha 
+void adicionaOcorrecia(Palavra *palavra, int linha)
 {
+    
     adicionarCelula(palavra->lista, criaCelula(criaTitem(linha)));
 }
 
@@ -57,7 +58,7 @@ void adicionaLinha(Palavra *palavra, Linha linha)
  */
 String retornaCadeiaDeCaracteres(Palavra *palavra)
 {
-    return palavra->palavra;
+    return palavra->string;
 }
 
 /**
@@ -72,10 +73,17 @@ void imprimeCadeiaDeCaracteres(Palavra *palavra)
 /**
  * @brief cadeia de caracteres + TAD Lista de Números de
 linha)
- * @param palavra
+ * @param palavra Palavra *
+ * @param output FILE *
  */
-void imprimePalavra(Palavra *palavra)
+void imprimePalavra(Palavra *palavra, FILE *output)
 {
-    printf("%s ->", palavra->palavra);
-    imprimeLista(palavra->lista);
+    fputs("-----------------------\n", output);
+    if (output == NULL)
+        printf("Palavra: %s\n", palavra->string);
+
+    fprintf(output, "Palavra: %s\n", palavra->string);
+    
+    imprimeLista(palavra->lista, output);
+    fputs("-----------------------\n", output);
 }

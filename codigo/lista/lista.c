@@ -1,15 +1,16 @@
 
 #include "lista.h"
 
+
 /**
  * @brief Implementação lista encadeada vazia
  * 
- * @param lista 
+ * @param lista ListaDeOcorrencias **
  */
-void FLVazia(Lista **lista)
+void fazListaVazia(ListaDeOcorrencias **lista)
 {
 
-    (*lista) = (Lista *)malloc(sizeof(Lista));
+    (*lista) = (ListaDeOcorrencias *)malloc(sizeof(ListaDeOcorrencias));
     if ((*lista) == NULL)
     {
         printf("deu erro");
@@ -21,7 +22,7 @@ void FLVazia(Lista **lista)
 /*
  * @brief cria um Titem
  *
- * @param line integer value for the line
+ * @param line int
  * @retval Retorna um Titem com a linha passada como parametro
  * @return Titem*
  */
@@ -38,10 +39,11 @@ Titem criaTitem(int line)
  *
  * @param item Parametro por cópia que será copiado dentro da TCelula criada
  * @return TCelula*
+ * @retval Retorna a celula a ser adicionada na lista
  */
-TCelula *criaCelula(Titem item)
+CelulaLista *criaCelula(Titem item)
 {
-    TCelula *celula = (TCelula *)malloc(sizeof(TCelula));
+    CelulaLista *celula = (CelulaLista *)malloc(sizeof(CelulaLista));
     (*celula).Item = item;
     (*celula).pProx = NULL;
     return celula;
@@ -50,13 +52,13 @@ TCelula *criaCelula(Titem item)
 /**
  * @brief Adiciona uma Celula a lista
  *
- * @param lista Lista onde a celula deve ser adicionada
- * @param item Ponteiro para a celula que deseja adicionar a lista
+ * @param lista ListaDeOcorrencias *
+ * @param item CelulaLista *
  */
-void adicionarCelula(Lista *lista, TCelula *item)
+void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 {
     int i;
-    Apontador aux;
+    PsCelula aux;
     aux = lista->pPrimeiro;
     if (aux == NULL)
     {
@@ -64,10 +66,14 @@ void adicionarCelula(Lista *lista, TCelula *item)
         lista->nItens++;
         return;
     }
+    
     else
     {
         while (1)
         {
+            if(aux->Item.linha == item->Item.linha ){
+                return; //sem repetição
+            }
             if (aux->pProx == NULL)
             {
                 break;
@@ -81,50 +87,68 @@ void adicionarCelula(Lista *lista, TCelula *item)
 }
 
 
+
 /**
  * @brief Imprime na saida padrão a lista de Titems
  * 
- * @param l 
+ * @param list ListaDeOcorrencias *
+ * @param output FILE *
  */
-void imprimeLista(Lista *l)
+void imprimeLista(ListaDeOcorrencias *list, FILE *output)
 {
-    if (l->nItens == 0)
+    if (listaEhVazia(list))
     {
         printf("Lista vazia\n");
         return;
     }
     int i;
-    Apontador aux;
-    aux = l->pPrimeiro;
-
+    PsCelula aux;
+    aux = list->pPrimeiro;
+    fprintf(output, "Linhas: ");
     while (1)
     {
 
         if (aux->pProx == NULL)
         {
 
-            printf("%d", aux->Item.linha);
+            if(list->nItens == 1){
+                fprintf(output, "|%d|", aux->Item.linha);
+            }else{
+                fprintf(output, "%d|", aux->Item.linha);
+            }
             break;
         }
-        printf("%d->", aux->Item.linha);
+        if(aux == list->pPrimeiro){
+
+        fprintf(output, "|%d|", aux->Item.linha);
+        }
+        else{
+
+        fprintf(output, "%d|", aux->Item.linha);
+        }
 
         aux = aux->pProx;
     }
-    printf("\n");
+    fprintf(output,"\n");
 }
 
 /**
  * @brief Remove a ultima celula da lisa encadiada
  * 
- * @param l 
+ * @param l ListaDeOcorrencias *
  */
-void popCell(Lista *l)
+void removeUltimaCelula(ListaDeOcorrencias *l)
 {
-    Apontador aux;
-    Apontador rem;
+    if(listaEhVazia(l)) return;
+    PsCelula aux;
+    PsCelula rem;
     aux = l->pPrimeiro;
     while (1)
-    {
+    {   
+        if(aux->pProx == NULL){
+            rem = aux;
+            break;
+        }
         if (aux->pProx->pProx == NULL) // eh o ultimo
         {
             rem = aux->pProx;
@@ -139,21 +163,32 @@ void popCell(Lista *l)
 }
 
 
+ /**
+  * @brief Verifica se a lista é vazia
+  * 
+  * @param lista ListaDeOcorrencias *
+  * @return int bool
+  */
+int listaEhVazia(ListaDeOcorrencias *lista){
+    return (lista->nItens == 0 && (( lista->pPrimeiro == lista->pUltimo) && (lista->pUltimo == NULL) ));
+}
+
+
 /**
  * @brief Retorna / imprime o numero de celulas na lista 
  * 
- * @param l lista a 
- * @param pres parametro de retorno opcional
+ * @param lista ListaDeOcorrencias *
+ * @param pres int *
  * @param output stream de saída (arquivo ou saida padrão)
  */
-void nitems(Lista *l, int *pres, FILE* output)
+void nitems(ListaDeOcorrencias *lista, int *pres, FILE* output)
 {   
     if(output != NULL){
-        fprintf(output, "%d", l->nItens);
+        fprintf(output, "%d", lista->nItens);
     }
     
     if (pres != NULL)
     {
-        (*pres) = l->nItens;
+        (*pres) = lista->nItens;
     }
 }
