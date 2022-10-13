@@ -53,12 +53,13 @@ int main()
     {
 
         clear();
+        puts("Digite o numero referente a opcao desejada e enter para confirmar ('q' para sair)\n");
         printf("1) Adicionar palavas de um texto ao dicionario a partir de um arquivo\n");
         printf("2) imprimir dicionario no console\n");
         printf("3) imprimir seção de uma letra no console\n");
         printf("4) imprimir todas as palavras \n");
         printf("5) limpar dicionario\n");
-        printf("6) limpar dicionario\n");
+        printf("6) imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
 
         printf("q - SAIR\n>");
 
@@ -95,6 +96,19 @@ int main()
             free(dict);
             inicializaDicionario(&dict);
         }
+        if(op == '6'){
+            puts("Digite o nome do arquivo que deseja imprimir a saida: ");
+            scanf("%s", filename);
+            FILE * outputfile = fopen(filename, "w");
+            if (!outputfile)
+            {
+                puts("problema ao escrever arquivo");
+            }
+            else
+            {
+                imprimeDicionario(dict, outputfile);
+            }
+        }
     }
 
     FILE *file = fopen("./output.txt", "w");
@@ -107,7 +121,6 @@ int main()
         imprimeDicionario(dict, file);
     }
 
-    imprimeDicionario(dict, stdout);
-
+    free(dict);
     return 0;
 }

@@ -69,7 +69,7 @@ void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
     
     else
     {
-        while (1)
+        while (true)
         {
             if(aux->Item.linha == item->Item.linha ){
                 return; //sem repetição
@@ -105,7 +105,7 @@ void imprimeLista(ListaDeOcorrencias *list, FILE *output)
     PsCelula aux;
     aux = list->pPrimeiro;
     fprintf(output, "Linhas: ");
-    while (1)
+    while (true)
     {
 
         if (aux->pProx == NULL)
@@ -143,7 +143,7 @@ void removeUltimaCelula(ListaDeOcorrencias *l)
     PsCelula aux;
     PsCelula rem;
     aux = l->pPrimeiro;
-    while (1)
+    while (true)
     {   
         if(aux->pProx == NULL){
             rem = aux;

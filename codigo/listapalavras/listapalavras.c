@@ -23,7 +23,7 @@ void inserePalavra(ListaPalavras *lista, CelulaListaPalavra *celula)
     }
     else
     {
-        while (1)
+        while (true)
         {
             if (aux->prox == NULL)
             {
@@ -51,7 +51,7 @@ void popCelulaListaPalavras(ListaPalavras *lista)
     PsCelulaListaPalavra aux;
     PsCelulaListaPalavra rem;
     aux = lista->primeiro;
-    while (1)
+    while (true)
     {
         if (aux->prox->prox == NULL) // eh o ultimo
         {
@@ -138,7 +138,7 @@ void imprimelistapalavras(ListaPalavras *lista, FILE* output)
     PsCelulaListaPalavra aux;
     aux = lista->primeiro;
 
-    while (1)
+    while (true)
     {
 
         if (aux->prox == NULL)

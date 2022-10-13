@@ -1,6 +1,7 @@
 #include "dicionario.h"
 #include "string.h"
 
+#define first 0
 /**
  * @brief Remove tabs e fim de linha de uma string
  *
@@ -74,7 +75,7 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
     }
     else
     {
-        while (1)
+        while (true)
         {
             if (aux->prox == NULL) // insere no final
             {
@@ -109,23 +110,23 @@ int verificaLetraExisteNoDicionario(String palavra, Dicionario *dict, PPalavraDi
     aux = dict->primeiro;
 
     if (aux == NULL)
-        return 0;
-
-    while (1)
+        return false;
+    
+    while (true)
     {
-        if (aux->letra == palavra[0])
+        if (aux->letra == palavra[first])
         {
             (*ref) = (*aux);
-            return 1;
+            return true;
         }
         if (aux->prox == NULL)
         {
-            return 0;
+            return false;
         }
         aux = aux->prox;
     }
 
-    return 0;
+    return false;
 }
 
 void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
@@ -162,7 +163,7 @@ void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
         else
         {
             DictSession *session;
-            criaPalavraDictVazia(&session, p->string[0]);
+            criaPalavraDictVazia(&session, p->string[first]);
             adicionarPalavraDict(dict, session);
             adicionaOcorrecia(p, line);
             celula = criaCelulaListaPalavras(p);
@@ -232,7 +233,7 @@ int constroiDicionario(String filename, Dicionario *dict)
 
     fclose(file);
     free(contents);
-    return 1;
+    return true;
 }
 
 void imprimeDicionario(Dicionario *dict, FILE *output)
@@ -284,7 +285,7 @@ void mostraTodasAsPalavras(Dicionario *dict)
             
             aux2 = aux->lista->primeiro;
 
-            while (1)
+            while (true)
             {
 
                 if (aux2->prox == NULL)
@@ -302,7 +303,7 @@ void mostraTodasAsPalavras(Dicionario *dict)
         }
         aux2 = aux->lista->primeiro;
 
-        while (1)
+        while (true)
         {
 
             if (aux2->prox == NULL)
