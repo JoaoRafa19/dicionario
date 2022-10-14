@@ -1,14 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "item.h"
 
 
 #define true 1
 #define false 0
-typedef struct
-{
-  int linha;
-  
-} Titem;
+
 typedef struct sCelula *PsCelula;
 
 typedef struct sCelula
@@ -26,7 +22,6 @@ typedef struct slista
 } ListaDeOcorrencias;
 
 void fazListaVazia(ListaDeOcorrencias **);
-Titem criaTitem(int linha);
 CelulaLista *criaCelula(Titem item);
 void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item);
 void imprimeLista(ListaDeOcorrencias *l, FILE*);

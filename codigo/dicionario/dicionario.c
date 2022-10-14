@@ -1,5 +1,6 @@
 #include "dicionario.h"
 #include "string.h"
+#include "stdbool.h"
 
 #define first 0
 /**

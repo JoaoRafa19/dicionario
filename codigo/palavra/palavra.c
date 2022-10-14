@@ -16,19 +16,6 @@ void criaPalavraVazia(Palavra **palavra)
 }
 
 /**
- * @brief Cria uma palavra na memória HEAP e escreve no endereço de memória passado como parâmetro
- * @param palavra Endereço de memória onde deve ser criada a palavra
- */
-Palavra *criapalavra()
-{
-    Palavra *p;
-    p = (Palavra *)malloc(sizeof(Palavra));
-    p->string = NULL;
-    fazListaVazia(&(p->lista));
-    return p;
-}
-
-/**
  * @brief Copia o conteúdo da String passada como parâmetro para a propriedade [palavra] da
  * palava passada como parâmetro
  *
@@ -67,7 +54,7 @@ String retornaCadeiaDeCaracteres(Palavra *palavra)
  */
 void imprimeCadeiaDeCaracteres(Palavra *palavra)
 {
-    printf("%s  ", retornaCadeiaDeCaracteres(palavra));
+    printf("%s  \n", retornaCadeiaDeCaracteres(palavra));
 }
 
 /**
@@ -79,10 +66,12 @@ linha)
 void imprimePalavra(Palavra *palavra, FILE *output)
 {
     fputs("-----------------------\n", output);
-    if (output == NULL)
-        printf("Palavra: %s\n", palavra->string);
+    if (output == NULL){
+        printf("Palavra: ");
+        imprimeCadeiaDeCaracteres(palavra);
+    }
 
-    fprintf(output, "Palavra: %s\n", palavra->string);
+    fprintf(output, "Palavra: %s\n", retornaCadeiaDeCaracteres(palavra));
     
     imprimeLista(palavra->lista, output);
     fputs("-----------------------\n", output);

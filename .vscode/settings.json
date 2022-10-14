@@ -17,6 +17,7 @@
         "type_traits": "c",
         "dicionario.h": "c",
         "functional": "c",
-        "tuple": "c"
+        "tuple": "c",
+        "item.h": "c"
     }
 }

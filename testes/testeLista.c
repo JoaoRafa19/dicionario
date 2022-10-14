@@ -19,20 +19,21 @@ int main()
   imprimeLista(lista, stdout); //
   cell = criaCelula(criaTitem(13));
   adicionarCelula(lista, cell);
-  imprimeLista(lista, stdout); //
+  imprimeLista(lista, stdout); // 10 1200 2 13
   removeUltimaCelula(lista);
-  imprimeLista(lista, stdout); //
-  removeUltimaCelula(lista);
-  removeUltimaCelula(lista);
-  removeUltimaCelula(lista);
-  imprimeLista(lista, stdout); //
+  imprimeLista(lista, stdout); // 10 1200 2
+  removeUltimaCelula(lista); // 10 1200
+  removeUltimaCelula(lista); //10
+  removeUltimaCelula(lista); // (nao faz nada)
+  imprimeLista(lista, stdout); // lista vazia
 
   // FILE *f;
+  // int res;
   // f = fopen("teste.txt", "w");
-  // nitems(lista, NULL,  stdout);
-  // nitems(lista, NULL, f);
-  
-  return 0;
+  // nitems(lista, NULL,  stdout); // escreve na saida padrao
+  // nitems(lista, &res, NULL); // escreve o resultado na variavel
+  // nitems(lista, NULL, f); //escreve no arquivo 
+
 
 
   return 0;

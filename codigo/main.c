@@ -55,8 +55,8 @@ int main()
         clear();
         puts("Digite o numero referente a opcao desejada e enter para confirmar ('q' para sair)\n");
         printf("1) Adicionar palavas de um texto ao dicionario a partir de um arquivo\n");
-        printf("2) imprimir dicionario no console\n");
-        printf("3) imprimir seção de uma letra no console\n");
+        printf("2) imprimir dicionario no terminal\n");
+        printf("3) imprimir seção de uma letra no terminal\n");
         printf("4) imprimir todas as palavras \n");
         printf("5) limpar dicionario\n");
         printf("6) imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");

@@ -14,6 +14,7 @@ void fazListaVazia(ListaDeOcorrencias **lista)
     if ((*lista) == NULL)
     {
         printf("deu erro");
+        exit(EXIT_FAILURE);
     }
     (*lista)->nItens = 0;
     (*lista)->pPrimeiro = (*lista)->pUltimo = NULL;
@@ -37,7 +38,7 @@ Titem criaTitem(int line)
 /**
  * @brief Cria uma celula com um Titem dentro
  *
- * @param item Parametro por cópia que será copiado dentro da TCelula criada
+ * @param item Titem
  * @return TCelula*
  * @retval Retorna a celula a ser adicionada na lista
  */
@@ -57,7 +58,6 @@ CelulaLista *criaCelula(Titem item)
  */
 void adicionarCelula(ListaDeOcorrencias *lista, CelulaLista *item)
 {
-    int i;
     PsCelula aux;
     aux = lista->pPrimeiro;
     if (aux == NULL)
@@ -108,7 +108,7 @@ void imprimeLista(ListaDeOcorrencias *list, FILE *output)
     while (true)
     {
 
-        if (aux->pProx == NULL)
+        if (aux->pProx == NULL) 
         {
 
             if(list->nItens == 1){
@@ -119,12 +119,10 @@ void imprimeLista(ListaDeOcorrencias *list, FILE *output)
             break;
         }
         if(aux == list->pPrimeiro){
-
-        fprintf(output, "|%d|", aux->Item.linha);
+            fprintf(output, "|%d|", aux->Item.linha);
         }
         else{
-
-        fprintf(output, "%d|", aux->Item.linha);
+            fprintf(output, "%d|", aux->Item.linha);
         }
 
         aux = aux->pProx;
@@ -147,6 +145,8 @@ void removeUltimaCelula(ListaDeOcorrencias *l)
     {   
         if(aux->pProx == NULL){
             rem = aux;
+            l->pPrimeiro = NULL;
+            l->pUltimo = NULL;
             break;
         }
         if (aux->pProx->pProx == NULL) // eh o ultimo
@@ -159,6 +159,7 @@ void removeUltimaCelula(ListaDeOcorrencias *l)
     }
     l->nItens--;
     aux->pProx = NULL;
+    l->pUltimo = aux;
     free(rem);
 }
 
@@ -192,3 +193,6 @@ void nitems(ListaDeOcorrencias *lista, int *pres, FILE* output)
         (*pres) = lista->nItens;
     }
 }
+
+// int nitems;
+// nitems(lista, NULL, NULL)
