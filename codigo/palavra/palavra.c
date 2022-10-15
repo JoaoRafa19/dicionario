@@ -71,7 +71,7 @@ void imprimePalavra(Palavra *palavra, FILE *output)
         imprimeCadeiaDeCaracteres(palavra);
     }
 
-    fprintf(output, "Palavra: %s\n", retornaCadeiaDeCaracteres(palavra));
+    fprintf(output, "%-10s: %s\n", "Palavra", retornaCadeiaDeCaracteres(palavra));
     
     imprimeLista(palavra->lista, output);
     fputs("-----------------------\n", output);

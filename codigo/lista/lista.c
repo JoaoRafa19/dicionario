@@ -104,7 +104,7 @@ void imprimeLista(ListaDeOcorrencias *list, FILE *output)
     int i;
     PsCelula aux;
     aux = list->pPrimeiro;
-    fprintf(output, "Linhas: ");
+    fprintf(output, "%-10s: ", "Linhas");
     while (true)
     {
 

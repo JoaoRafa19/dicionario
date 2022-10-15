@@ -2,36 +2,36 @@
 Letra:[a]
 
 -----------------------
-Palavra: a
-Linhas: |1|2|3|4|5|9|10|
+Palavra   : a
+Linhas    : |1|2|3|4|5|9|10|
 -----------------------
 -----------------------
-Palavra: acabado
-Linhas: |17|
+Palavra   : acabado
+Linhas    : |17|
 -----------------------
 -----------------------
-Palavra: alem
-Linhas: |13|
+Palavra   : alem
+Linhas    : |13|
 -----------------------
 -----------------------
-Palavra: animais
-Linhas: |15|
+Palavra   : animais
+Linhas    : |15|
 -----------------------
 -----------------------
-Palavra: aniversario
-Linhas: |5|
+Palavra   : aniversario
+Linhas    : |5|
 -----------------------
 -----------------------
-Palavra: ao
-Linhas: |12|
+Palavra   : ao
+Linhas    : |12|
 -----------------------
 -----------------------
-Palavra: apagou
-Linhas: |3|
+Palavra   : apagou
+Linhas    : |3|
 -----------------------
 -----------------------
-Palavra: ate
-Linhas: |7|
+Palavra   : ate
+Linhas    : |7|
 -----------------------
 ***********************************
 
@@ -39,20 +39,20 @@ Linhas: |7|
 Letra:[b]
 
 -----------------------
-Palavra: bem
-Linhas: |14|18|
+Palavra   : bem
+Linhas    : |14|18|
 -----------------------
 -----------------------
-Palavra: bolo
-Linhas: |5|10|11|12|15|16|18|
+Palavra   : bolo
+Linhas    : |5|10|11|12|15|16|18|
 -----------------------
 -----------------------
-Palavra: bom
-Linhas: |12|
+Palavra   : bom
+Linhas    : |12|
 -----------------------
 -----------------------
-Palavra: bonita
-Linhas: |4|
+Palavra   : bonita
+Linhas    : |4|
 -----------------------
 ***********************************
 
@@ -60,48 +60,48 @@ Linhas: |4|
 Letra:[c]
 
 -----------------------
-Palavra: chamaram
-Linhas: |15|
+Palavra   : chamaram
+Linhas    : |15|
 -----------------------
 -----------------------
-Palavra: chata
-Linhas: |5|
+Palavra   : chata
+Linhas    : |5|
 -----------------------
 -----------------------
-Palavra: chateados
-Linhas: |17|
+Palavra   : chateados
+Linhas    : |17|
 -----------------------
 -----------------------
-Palavra: chegam
-Linhas: |16|
+Palavra   : chegam
+Linhas    : |16|
 -----------------------
 -----------------------
-Palavra: chocalate
-Linhas: |12|
+Palavra   : chocalate
+Linhas    : |12|
 -----------------------
 -----------------------
-Palavra: chocolate
-Linhas: |11|
+Palavra   : chocolate
+Linhas    : |11|
 -----------------------
 -----------------------
-Palavra: com
-Linhas: |1|4|
+Palavra   : com
+Linhas    : |1|4|
 -----------------------
 -----------------------
-Palavra: comerem
-Linhas: |15|
+Palavra   : comerem
+Linhas    : |15|
 -----------------------
 -----------------------
-Palavra: comida
-Linhas: |6|
+Palavra   : comida
+Linhas    : |6|
 -----------------------
 -----------------------
-Palavra: comidas
-Linhas: |6|
+Palavra   : comidas
+Linhas    : |6|
 -----------------------
 -----------------------
-Palavra: correndo
-Linhas: |8|
+Palavra   : correndo
+Linhas    : |8|
 -----------------------
 ***********************************
 
@@ -109,16 +109,16 @@ Linhas: |8|
 Letra:[d]
 
 -----------------------
-Palavra: da
-Linhas: |2|5|13|18|
+Palavra   : da
+Linhas    : |2|5|13|18|
 -----------------------
 -----------------------
-Palavra: de
-Linhas: |5|7|11|13|
+Palavra   : de
+Linhas    : |5|7|11|13|
 -----------------------
 -----------------------
-Palavra: do
-Linhas: |1|2|5|11|15|
+Palavra   : do
+Linhas    : |1|2|5|11|15|
 -----------------------
 ***********************************
 
@@ -126,36 +126,36 @@ Linhas: |1|2|5|11|15|
 Letra:[e]
 
 -----------------------
-Palavra: e
-Linhas: |1|2|3|4|5|7|9|10|14|16|17|18|
+Palavra   : e
+Linhas    : |1|2|3|4|5|7|9|10|14|16|17|18|
 -----------------------
 -----------------------
-Palavra: ela
-Linhas: |4|
+Palavra   : ela
+Linhas    : |4|
 -----------------------
 -----------------------
-Palavra: ele
-Linhas: |3|
+Palavra   : ele
+Linhas    : |3|
 -----------------------
 -----------------------
-Palavra: embora
-Linhas: |18|
+Palavra   : embora
+Linhas    : |18|
 -----------------------
 -----------------------
-Palavra: enfeitado
-Linhas: |14|
+Palavra   : enfeitado
+Linhas    : |14|
 -----------------------
 -----------------------
-Palavra: entao
-Linhas: |17|
+Palavra   : entao
+Linhas    : |17|
 -----------------------
 -----------------------
-Palavra: era
-Linhas: |1|2|3|4|10|12|13|14|
+Palavra   : era
+Linhas    : |1|2|3|4|10|12|13|14|
 -----------------------
 -----------------------
-Palavra: estava
-Linhas: |18|
+Palavra   : estava
+Linhas    : |18|
 -----------------------
 ***********************************
 
@@ -163,28 +163,28 @@ Linhas: |18|
 Letra:[f]
 
 -----------------------
-Palavra: falou
-Linhas: |4|
+Palavra   : falou
+Linhas    : |4|
 -----------------------
 -----------------------
-Palavra: ficaram
-Linhas: |9|17|
+Palavra   : ficaram
+Linhas    : |9|17|
 -----------------------
 -----------------------
-Palavra: ficou
-Linhas: |1|
+Palavra   : ficou
+Linhas    : |1|
 -----------------------
 -----------------------
-Palavra: foca
-Linhas: |3|7|
+Palavra   : foca
+Linhas    : |3|7|
 -----------------------
 -----------------------
-Palavra: fogo
-Linhas: |1|2|3|
+Palavra   : fogo
+Linhas    : |1|2|3|
 -----------------------
 -----------------------
-Palavra: foram
-Linhas: |18|
+Palavra   : foram
+Linhas    : |18|
 -----------------------
 ***********************************
 
@@ -192,28 +192,28 @@ Linhas: |18|
 Letra:[g]
 
 -----------------------
-Palavra: gato
-Linhas: |2|7|
+Palavra   : gato
+Linhas    : |2|7|
 -----------------------
 -----------------------
-Palavra: gostaram
-Linhas: |11|
+Palavra   : gostaram
+Linhas    : |11|
 -----------------------
 -----------------------
-Palavra: gosto
-Linhas: |7|
+Palavra   : gosto
+Linhas    : |7|
 -----------------------
 -----------------------
-Palavra: gostosas
-Linhas: |6|
+Palavra   : gostosas
+Linhas    : |6|
 -----------------------
 -----------------------
-Palavra: gostoso
-Linhas: |13|
+Palavra   : gostoso
+Linhas    : |13|
 -----------------------
 -----------------------
-Palavra: gostou
-Linhas: |2|
+Palavra   : gostou
+Linhas    : |2|
 -----------------------
 ***********************************
 
@@ -221,8 +221,8 @@ Linhas: |2|
 Letra:[i]
 
 -----------------------
-Palavra: igualava
-Linhas: |12|
+Palavra   : igualava
+Linhas    : |12|
 -----------------------
 ***********************************
 
@@ -230,8 +230,8 @@ Linhas: |12|
 Letra:[j]
 
 -----------------------
-Palavra: ja
-Linhas: |17|
+Palavra   : ja
+Linhas    : |17|
 -----------------------
 ***********************************
 
@@ -239,24 +239,24 @@ Linhas: |17|
 Letra:[m]
 
 -----------------------
-Palavra: mas
-Linhas: |10|12|13|
+Palavra   : mas
+Linhas    : |10|12|13|
 -----------------------
 -----------------------
-Palavra: medo
-Linhas: |1|
+Palavra   : medo
+Linhas    : |1|
 -----------------------
 -----------------------
-Palavra: muido
-Linhas: |11|
+Palavra   : muido
+Linhas    : |11|
 -----------------------
 -----------------------
-Palavra: muita
-Linhas: |6|
+Palavra   : muita
+Linhas    : |6|
 -----------------------
 -----------------------
-Palavra: muito
-Linhas: |6|10|
+Palavra   : muito
+Linhas    : |6|10|
 -----------------------
 ***********************************
 
@@ -264,12 +264,12 @@ Linhas: |6|10|
 Letra:[n]
 
 -----------------------
-Palavra: nao
-Linhas: |7|12|
+Palavra   : nao
+Linhas    : |7|12|
 -----------------------
 -----------------------
-Palavra: nullam
-Linhas: |19|
+Palavra   : nullam
+Linhas    : |19|
 -----------------------
 ***********************************
 
@@ -277,16 +277,16 @@ Linhas: |19|
 Letra:[o]
 
 -----------------------
-Palavra: o
-Linhas: |1|2|3|4|8|9|10|12|14|16|17|18|
+Palavra   : o
+Linhas    : |1|2|3|4|8|9|10|12|14|16|17|18|
 -----------------------
 -----------------------
-Palavra: onca
-Linhas: |5|
+Palavra   : onca
+Linhas    : |5|
 -----------------------
 -----------------------
-Palavra: outros
-Linhas: |15|
+Palavra   : outros
+Linhas    : |15|
 -----------------------
 ***********************************
 
@@ -294,24 +294,24 @@ Linhas: |15|
 Letra:[p]
 
 -----------------------
-Palavra: para
-Linhas: |15|
+Palavra   : para
+Linhas    : |15|
 -----------------------
 -----------------------
-Palavra: pato
-Linhas: |1|7|10|14|16|17|
+Palavra   : pato
+Linhas    : |1|7|10|14|16|17|
 -----------------------
 -----------------------
-Palavra: pois
-Linhas: |1|2|4|5|8|
+Palavra   : pois
+Linhas    : |1|2|4|5|8|
 -----------------------
 -----------------------
-Palavra: por
-Linhas: |14|
+Palavra   : por
+Linhas    : |14|
 -----------------------
 -----------------------
-Palavra: pos
-Linhas: |3|
+Palavra   : pos
+Linhas    : |3|
 -----------------------
 ***********************************
 
@@ -319,16 +319,16 @@ Linhas: |3|
 Letra:[q]
 
 -----------------------
-Palavra: quando
-Linhas: |16|
+Palavra   : quando
+Linhas    : |16|
 -----------------------
 -----------------------
-Palavra: que
-Linhas: |4|13|16|18|
+Palavra   : que
+Linhas    : |4|13|16|18|
 -----------------------
 -----------------------
-Palavra: quente
-Linhas: |1|2|3|
+Palavra   : quente
+Linhas    : |1|2|3|
 -----------------------
 ***********************************
 
@@ -336,12 +336,12 @@ Linhas: |1|2|3|
 Letra:[r]
 
 -----------------------
-Palavra: rato
-Linhas: |9|
+Palavra   : rato
+Linhas    : |9|
 -----------------------
 -----------------------
-Palavra: recheado
-Linhas: |10|18|
+Palavra   : recheado
+Linhas    : |10|18|
 -----------------------
 ***********************************
 
@@ -349,28 +349,28 @@ Linhas: |10|18|
 Letra:[s]
 
 -----------------------
-Palavra: sairam
-Linhas: |8|
+Palavra   : sairam
+Linhas    : |8|
 -----------------------
 -----------------------
-Palavra: sapo
-Linhas: |4|6|7|8|10|14|16|17|
+Palavra   : sapo
+Linhas    : |4|6|7|8|10|14|16|17|
 -----------------------
 -----------------------
-Palavra: se
-Linhas: |12|
+Palavra   : se
+Linhas    : |12|
 -----------------------
 -----------------------
-Palavra: sem
-Linhas: |18|
+Palavra   : sem
+Linhas    : |18|
 -----------------------
 -----------------------
-Palavra: ser
-Linhas: |14|
+Palavra   : ser
+Linhas    : |14|
 -----------------------
 -----------------------
-Palavra: so
-Linhas: |9|
+Palavra   : so
+Linhas    : |9|
 -----------------------
 ***********************************
 
@@ -378,16 +378,16 @@ Linhas: |9|
 Letra:[t]
 
 -----------------------
-Palavra: ter
-Linhas: |6|7|
+Palavra   : ter
+Linhas    : |6|7|
 -----------------------
 -----------------------
-Palavra: tinha
-Linhas: |17|
+Palavra   : tinha
+Linhas    : |17|
 -----------------------
 -----------------------
-Palavra: todos
-Linhas: |8|
+Palavra   : todos
+Linhas    : |8|
 -----------------------
 ***********************************
 
@@ -395,28 +395,28 @@ Linhas: |8|
 Letra:[v]
 
 -----------------------
-Palavra: vai
-Linhas: |6|7|
+Palavra   : vai
+Linhas    : |6|7|
 -----------------------
 -----------------------
-Palavra: vela
-Linhas: |1|2|3|4|5|9|
+Palavra   : vela
+Linhas    : |1|2|3|4|5|9|
 -----------------------
 -----------------------
-Palavra: viram
-Linhas: |8|16|
+Palavra   : viram
+Linhas    : |8|16|
 -----------------------
 -----------------------
-Palavra: viu
-Linhas: |1|2|3|4|
+Palavra   : viu
+Linhas    : |1|2|3|4|
 -----------------------
 -----------------------
-Palavra: vizinha
-Linhas: |13|18|
+Palavra   : vizinha
+Linhas    : |13|18|
 -----------------------
 -----------------------
-Palavra: voce
-Linhas: |6|
+Palavra   : voce
+Linhas    : |6|
 -----------------------
 ***********************************
 
