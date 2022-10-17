@@ -78,10 +78,10 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
     {
         while (true)
         {
-            if (aux->prox == NULL) // insere no final
-            {
-                aux->prox = item;
-                dict->ultimo = item;
+            if (item->letra < aux->letra)
+            { // insere no inicio
+                item->prox = aux;
+                dict->primeiro = item;
                 dict->nitens++;
                 return;
             }
@@ -93,10 +93,10 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
                 dict->nitens++;
                 return;
             }
-            if (item->letra < aux->letra)
-            { // insere no inicio
-                item->prox = aux;
-                dict->primeiro = item;
+            if (aux->prox == NULL) // insere no final
+            {
+                aux->prox = item;
+                dict->ultimo = item;
                 dict->nitens++;
                 return;
             }
