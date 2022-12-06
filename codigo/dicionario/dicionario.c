@@ -85,6 +85,13 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
                 dict->nitens++;
                 return;
             }
+            if (aux->prox == NULL) // insere no final
+            {
+                aux->prox = item;
+                dict->ultimo = item;
+                dict->nitens++;
+                return;
+            }
             // a->c  d
             if (item->letra > aux->letra && item->letra < aux->prox->letra) // insere no meio
             {
@@ -93,13 +100,7 @@ void adicionarPalavraDict(Dicionario *dict, PsDictSession item)
                 dict->nitens++;
                 return;
             }
-            if (aux->prox == NULL) // insere no final
-            {
-                aux->prox = item;
-                dict->ultimo = item;
-                dict->nitens++;
-                return;
-            }
+            
             aux = aux->prox;
         }
     }
@@ -176,6 +177,10 @@ void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
     }
 }
 
+/**
+ * @warning NÃO UTILIZAR
+ * 
+ */
 void ordenar(DictSession **primeiro, int tam)
 {
     int i = 0, retorno;
@@ -332,4 +337,36 @@ void inicializaDicionario(Dicionario **dict)
     (*dict) = (Dicionario *)malloc(sizeof(Dicionario));
     (*dict)->nitens = 0;
     (*dict)->primeiro = (*dict)->ultimo = NULL;
+}
+
+/**
+ * @brief Remove uma palavra específica do dicionário
+ * 
+ * @param dict 
+ * @param string 
+ */
+void removePalavraDicionario(Dicionario *dict, String string){
+    if (dict->nitens == 0 && (dict->primeiro == dict->ultimo) && (dict->primeiro == NULL))
+    {
+        puts("Dicionario vazio");
+        return;
+    }
+    int i;
+    PPalavraDict aux;
+    aux = dict->primeiro;
+    PsCelulaListaPalavra aux2;
+
+    while (aux != NULL)
+    {
+
+        printf("%c\n", aux->letra);
+        if(aux->letra == string[0]){
+            printf("remove %s de  %c \n",string, aux->letra);
+            removeCelulaListaPalavra(aux->lista, string);
+            break;
+        }
+        aux = aux->prox;
+    }
+    
+
 }

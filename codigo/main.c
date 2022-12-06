@@ -47,6 +47,7 @@ int main()
     inicializaDicionario(&dict);
 
     char filename[100];
+    
     char op;
 
     while (op != 'q')
@@ -56,10 +57,13 @@ int main()
         puts("Digite o numero referente a opcao desejada e enter para confirmar ('q' para sair)\n");
         printf("1) Adicionar palavas de um texto ao dicionario a partir de um arquivo\n");
         printf("2) imprimir dicionario no terminal\n");
+        printf("2.1) imprimir dicionario no terminal ordenado \n");
         printf("3) imprimir seção de uma letra no terminal\n");
-        printf("4) imprimir todas as palavras \n");
-        printf("5) limpar dicionario\n");
-        printf("6) imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
+        printf("4) imprimir seção (ORDENADA) de uma letra no terminal\n");
+        printf("5) imprimir todas as palavras \n");
+        printf("6) limpar dicionario\n");
+        printf("7) imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
+        printf("8) Remover palavra passando palavra como prametro \n");
 
         printf("q - SAIR\n>");
 
@@ -108,6 +112,13 @@ int main()
             {
                 imprimeDicionario(dict, outputfile);
             }
+        }
+        if(op == '7'){
+            puts("Digite a palavra que deseja remover");
+            char palavra[100];
+            scanf("%s", palavra);
+            removePalavraDicionario(dict, palavra);
+            pause(&op);
         }
     }
 
