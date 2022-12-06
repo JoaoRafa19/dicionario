@@ -1,6 +1,5 @@
-#include "../codigo/listapalavras/listapalavras.h"
+#include "../codigo/vetorpalavras/vetorpalavras.h"
 #include <string.h>
-
 
 int main(){
 
@@ -32,6 +31,8 @@ int main(){
     
     //printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia", &celula));
     
+    bubbleSort(lista->nItens, lista->vetor);
+    imprimelistapalavras(lista, stdout);
     
 
     //popCelulaListaPalavras(lista);

@@ -10,6 +10,7 @@
 
 #include "../palavra/palavra.h"
 
+
 typedef struct sCelulaListaPalavra* PsCelulaListaPalavra;
 typedef struct sCelulaListaPalavra {
 
@@ -35,3 +36,4 @@ int verificaPalavraExisteNaLista(ListaPalavras *, String , CelulaListaPalavra *)
 int numeroDePalavras(ListaPalavras *lista);
 void imprimelistapalavras(ListaPalavras *lista, FILE* output);
 int compareString(String s1, String s2);
+void bubbleSort(int n, CelulaListaPalavra * vetor);

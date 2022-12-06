@@ -18,6 +18,7 @@
         "dicionario.h": "c",
         "functional": "c",
         "tuple": "c",
-        "item.h": "c"
+        "item.h": "c",
+        "vetorpalavras.h": "c"
     }
 }

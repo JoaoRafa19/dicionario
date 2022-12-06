@@ -1,8 +1,6 @@
-#include "tad/tad.h"
-#include <stdio.h>
-#include <time.h>
+#include "./vetorpalavras.h"
 
-void bubbleSort(int n, Titem *vetor)
+void bubbleSort(int n, CelulaListaPalavra * vetor)
 {
     int i, j;
 
@@ -10,9 +8,9 @@ void bubbleSort(int n, Titem *vetor)
     {
         for (i = 0; i < n - 1; i++)
         {
-            if (vetor[i].Chave > vetor[i + 1].Chave)
+            if (vetor[i].palavra->string[0] > vetor[i + 1].palavra->string[0] )
             {
-                Titem aux = vetor[i];
+                CelulaListaPalavra aux = vetor[i];
                 vetor[i] = vetor[i + 1];
                 vetor[i + 1] = aux;
             }

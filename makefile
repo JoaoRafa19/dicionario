@@ -16,5 +16,8 @@ testepalavra:
 testelistapalavras:
 	gcc -g codigo/lista/lista.h codigo/lista/lista.c codigo/palavra/palavra.h codigo/palavra/palavra.c  ./codigo/listapalavras/listapalavras.h ./codigo/listapalavras/listapalavras.c ./testes/testeListaDePalavras.c
 
+testevetorpalavras:
+	gcc -g codigo/lista/lista.h codigo/lista/lista.c codigo/palavra/palavra.h codigo/palavra/palavra.c  ./codigo/vetorpalavras/vetorpalavras.h ./codigo/vetorpalavras/vetorpalavras.c ./testes/testeVetorPalavras.c
+
 clear:
 	rm -f *.o *.h.gch *.out *.exe
