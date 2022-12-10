@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "../listapalavras/listapalavras.h"
-
+#include "palavra.h"
 /**
  * @brief Cria uma palavra na memória HEAP e escreve no endereço de memória passado como parâmetro
  * @param palavra Endereço de memória onde deve ser criada a palavra

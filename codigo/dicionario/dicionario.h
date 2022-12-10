@@ -1,4 +1,4 @@
-#include "../listapalavras/listapalavras.h"
+#include "../vetorpalavras/vetorpalavras.h"
 
 typedef struct sDictSession * PsDictSession;
 

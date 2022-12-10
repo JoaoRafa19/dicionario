@@ -1,5 +1,4 @@
 #include "../codigo/vetorpalavras/vetorpalavras.h"
-#include <string.h>
 
 int main(){
 
@@ -17,7 +16,7 @@ int main(){
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
     criaPalavraVazia(&p);
-    preencheCadeiaDeCaracteres(p, "teste string");
+    preencheCadeiaDeCaracteres(p, "teste aa");
     adicionaOcorrecia(p, 14);
     inserePalavra(lista, criaCelulaListaPalavras(p));
 
@@ -25,20 +24,24 @@ int main(){
     preencheCadeiaDeCaracteres(p, "string vazia");
     adicionaOcorrecia(p, 11);
     inserePalavra(lista, criaCelulaListaPalavras(p));
-    imprimelistapalavras(lista, stdout);
+    //imprimelistapalavras(lista, stdout);
     
     CelulaListaPalavra celula;
     
     //printf("\n->%d<-", verificaPalavraExisteNaLista(lista, "string vazia", &celula));
     
-    bubbleSort(lista->nItens, lista->vetor);
+    //bubbleSort(lista->nItens, lista->vetor);
     imprimelistapalavras(lista, stdout);
-    
+    printf("--------------------------------\n\n\n\n\n\n");
+    sort(lista->nItens, lista->vetor, insertionSort);
+    printf("--------------------------------\n\n\n\n\n\n");
+    imprimelistapalavras(lista, stdout);
+    //bubbleSort(lista->nItens, lista->vetor);
 
     //popCelulaListaPalavras(lista);
 
-
-    imprimelistapalavras(lista, stdout);
+    printf("--------------------------------\n\n\n\n\n\n");
+    //imprimelistapalavras(lista, stdout);
 
     return 0;
 }

@@ -19,21 +19,32 @@ typedef struct sCelulaListaPalavra {
 
 } CelulaListaPalavra;
 
+typedef CelulaListaPalavra* VetorCelulaPalavra;
+
 typedef struct {
 
     int nItens;
-    PsCelulaListaPalavra vetor;
+    VetorCelulaPalavra vetor;
 
 } ListaPalavras;
 
+typedef void (*SortFunction)(int,VetorCelulaPalavra);
+
+void sort(int n, VetorCelulaPalavra vetor, SortFunction func);
+void bubbleSort(int n, VetorCelulaPalavra  vetor);
+void insertionSort(int n, VetorCelulaPalavra vetor);
+void heapsort(int n, VetorCelulaPalavra vetor);
+void quickSort(int n, VetorCelulaPalavra vetor);
+void selectionSort(int n, VetorCelulaPalavra vetor);
+void shellSort(int n, VetorCelulaPalavra vetor);
 
 void criaNovaListaDePalavrasVazia(ListaPalavras** lista);
-CelulaListaPalavra *criaCelulaListaPalavras(Palavra *palavra);
-void inserePalavra(ListaPalavras* lista, CelulaListaPalavra *celula);
+VetorCelulaPalavra criaCelulaListaPalavras(Palavra *palavra);
+void inserePalavra(ListaPalavras* lista, VetorCelulaPalavra celula);
 void popCelulaListaPalavras(ListaPalavras *lista);
 void removeCelulaListaPalavra(ListaPalavras *lista, String palavra);
-int verificaPalavraExisteNaLista(ListaPalavras *, String , CelulaListaPalavra *);
+int verificaPalavraExisteNaLista(ListaPalavras *, String , VetorCelulaPalavra );
 int numeroDePalavras(ListaPalavras *lista);
 void imprimelistapalavras(ListaPalavras *lista, FILE* output);
 int compareString(String s1, String s2);
-void bubbleSort(int n, CelulaListaPalavra * vetor);
+void insertionSort(int n, VetorCelulaPalavra vetor);

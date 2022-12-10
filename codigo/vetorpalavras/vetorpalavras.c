@@ -25,12 +25,10 @@ void criaNovaListaDePalavrasVazia(ListaPalavras **lista)
 void inserePalavra(ListaPalavras *lista, CelulaListaPalavra *celula)
 {
 
-    int i;
-    PsCelulaListaPalavra aux;
     int nitems = lista->nItens;
     
-    lista->vetor = (PsCelulaListaPalavra ) reallocarray(lista->vetor, nitems+1, sizeof(CelulaListaPalavra));
-    lista->vetor[nitems] = (*celula);
+    lista->vetor = (VetorCelulaPalavra ) reallocarray(lista->vetor, nitems+1, sizeof(CelulaListaPalavra));
+    lista->vetor[nitems] = (* celula);
     lista->nItens++;
 }
 
@@ -38,11 +36,11 @@ void inserePalavra(ListaPalavras *lista, CelulaListaPalavra *celula)
  * @brief Cria e retorna uma nova CelulaListaPalavra
  * 
  * @param palavra Palavra *
- * @return CelulaListaPalavra* 
+ * @return CelulaListaPalavra* aka VetorCelulaPalavra 
  */
-CelulaListaPalavra *criaCelulaListaPalavras(Palavra *palavra)
+VetorCelulaPalavra criaCelulaListaPalavras(Palavra *palavra)
 {
-    CelulaListaPalavra *cell = (CelulaListaPalavra *)malloc(sizeof(CelulaListaPalavra));
+    VetorCelulaPalavra cell = (VetorCelulaPalavra)malloc(sizeof(CelulaListaPalavra));
     (*cell).palavra = palavra;
     (*cell).prox = NULL;
 
@@ -54,94 +52,81 @@ CelulaListaPalavra *criaCelulaListaPalavras(Palavra *palavra)
  * 
  * @param lista ListaPalavras *
  */
-// void popCelulaListaPalavras(ListaPalavras *lista)
-// {
+void popCelulaListaPalavras(ListaPalavras *lista)
+{
 
-//     aux = lista->primeiro;
-//     while (true)
-//     {
-//         if (aux->prox->prox == NULL) // eh o ultimo
-//         {
-//             rem = aux->prox;
-//             break;
-//         }
+    PsCelulaListaPalavra aux;
+    int nitems = lista->nItens;
+    lista->vetor = (VetorCelulaPalavra ) reallocarray(lista->vetor, nitems-1, sizeof(CelulaListaPalavra));
+    lista->nItens--;
+}
 
-//         aux = aux->prox;
-//     }
-//     lista->nItens--;
-//     lista->ultimo = aux;
-//     aux->prox = NULL;
-//     free(rem);
-// }
-
-// /**
-//  * @brief Remove uma celula em que a palavra que for passada como parametro for igual a da celula 
-//  * 
-//  * @param lista ListaPalavras *
-//  * @param palavra String
-//  */
-// void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
-// {
-//     PsCelulaListaPalavra aux;
-//     PsCelulaListaPalavra rem;
-//     aux = lista->primeiro;
-//     if(compareString(aux->palavra->string, palavra)){
-//         rem = aux;
-//         lista->primeiro = aux->prox;
-//         lista->nItens--;
-//         free(rem);
-//         return;
-//     }
-//     while (true)
-//     {
-//         if (aux->prox == NULL) // eh o ultimo
-//         {
-//             printf("palavra não encontrada");
-//             return;
-//         }
-//         printf("%s == %s", aux->prox->palavra->string, palavra);
-//         if(compareString(aux->prox->palavra->string, palavra)){
-//             puts("remove");
-//             rem = aux->prox;
-//             aux->prox = rem->prox;
-//             free(rem);
-//             lista->nItens--;
-//             return;
-//         }
+/**
+ * @brief Remove uma celula em que a palavra que for passada como parametro for igual a da celula 
+ * 
+ * @param lista ListaPalavras *
+ * @param palavra String
+ */
+void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
+{
+    PsCelulaListaPalavra aux;
+    PsCelulaListaPalavra rem;
+    aux = &lista->vetor[0];
+    if(compareString(aux->palavra->string, palavra)){
+        rem = aux;
+        
+        lista->nItens--;
+        free(rem);
+        return;
+    }
+    while (true)
+    {
+        if (aux->prox == NULL) // eh o ultimo
+        {
+            printf("palavra não encontrada");
+            return;
+        }
+        printf("%s == %s", aux->prox->palavra->string, palavra);
+        if(compareString(aux->prox->palavra->string, palavra)){
+            puts("remove");
+            rem = aux->prox;
+            aux->prox = rem->prox;
+            free(rem);
+            lista->nItens--;
+            return;
+        }
 
         
-//         aux = aux->prox;
-//     }
+        aux = aux->prox;
+    }
     
-// }
+}
 
-// /**
-//  * @brief Verifica se uma palavra passada como parametro ja existe na lista
-//  *
-//  * @param lista ListaPalavras *
-//  * @param string String
-//  * @param ref PsCelulaListaPalavra 
-//  */
-// int verificaPalavraExisteNaLista(ListaPalavras *lista, String string, PsCelulaListaPalavra ref)
-// {
+/**
+ * @brief Verifica se uma palavra passada como parametro ja existe na lista
+ *
+ * @param lista ListaPalavras *
+ * @param string String
+ * @param ref PsCelulaListaPalavra 
+ */
+int verificaPalavraExisteNaLista(ListaPalavras *lista, String string, PsCelulaListaPalavra ref)
+{
 
-//     int i;
-//     PsCelulaListaPalavra aux;
-//     aux = lista->primeiro;
-//     for (aux = lista->primeiro; aux != NULL; aux = aux->prox)
-//     {
+    int i;
+    for (int i = 0; i < lista->nItens; i++)
+    {
 
-//         if (compareString(string, aux->palavra->string))
-//         {
-//             if (ref != NULL)
-//             {
-//                 (*ref) = (*aux);
-//             }
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+        if (compareString(string, lista->vetor[i].palavra->string))
+        {
+            if (ref != NULL)
+            {
+                (*ref) = lista->vetor[i];
+            }
+            return true;
+        }
+    }
+    return false;
+}
 
 
 /**
