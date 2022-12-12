@@ -141,13 +141,13 @@ void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
 
         DictSession *session = (DictSession *)malloc(sizeof(DictSession));
 
-        PsCelulaListaPalavra refCelula;
+        CelulaListaPalavra * celula;
 
         Palavra *p;
         criaPalavraVazia(&p);
         removeTablaturasEFimDeLinha(palavraSeparadaPorEspacos);
         preencheCadeiaDeCaracteres(p, palavraSeparadaPorEspacos);
-        CelulaListaPalavra *celula = criaCelulaListaPalavras(p);
+        celula = criaCelulaListaPalavras(p);
         if (verificaLetraExisteNoDicionario(palavraSeparadaPorEspacos, dict, session))
         {
 
@@ -281,46 +281,23 @@ void mostraTodasAsPalavras(Dicionario *dict)
     int i;
     PPalavraDict aux;
     aux = dict->primeiro;
-    PsCelulaListaPalavra aux2;
+    CelulaListaPalavra aux2;
 
-    while (1)
+    while (true)
     {
 
         if (aux->prox == NULL)
         {
-            
-            aux2 = aux->lista->primeiro;
-
-            while (true)
+            for(int i = 0; i< aux->lista->nItens; i++)
             {
-
-                if (aux2->prox == NULL)
-                {
-
-                    printf("%s \n", aux2->palavra->string);
-                    break;
-                }
-                printf("%s ", aux2->palavra->string);
-
-                aux2 = aux2->prox;
+                printf("%s ", aux->lista->vetor[i].palavra->string);
             }
-
             break;
         }
-        aux2 = aux->lista->primeiro;
 
-        while (true)
+        for(int i = 0; i< aux->lista->nItens; i++)
         {
-
-            if (aux2->prox == NULL)
-            {
-
-                printf("%s \n", aux2->palavra->string);
-                break;
-            }
-            printf("%s ", aux2->palavra->string);
-            
-            aux2 = aux2->prox;
+            printf("%s ", aux->lista->vetor[i].palavra->string);
         }
 
         aux = aux->prox;
@@ -359,7 +336,6 @@ void removePalavraDicionario(Dicionario *dict, String string){
     while (aux != NULL)
     {
 
-        printf("%c\n", aux->letra);
         if(aux->letra == string[0]){
             printf("remove %s de  %c \n",string, aux->letra);
             removeCelulaListaPalavra(aux->lista, string);
