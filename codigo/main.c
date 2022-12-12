@@ -38,36 +38,7 @@ void pause(char *c)
     (*c) = getchar();
 }
 
-void imprimeOrdenado(String option, DictSession *session)
-{
 
-    fputs("***********************************\n", stdout);
-    fprintf(stdout, "Letra:[%c]\n\n", session->letra);
-    switch (option[0])
-    {
-    case '1':
-        sort(session->lista->nItens, session->lista->vetor, bubbleSort);
-        break;
-    case '2':
-        sort(session->lista->nItens, session->lista->vetor, insertionSort);
-        break;
-    case '3':
-        sort(session->lista->nItens, session->lista->vetor, heapsort);
-        break;
-    case '4':
-        sort(session->lista->nItens, session->lista->vetor, quickSort);
-        break;
-    case '5':
-        sort(session->lista->nItens, session->lista->vetor, selectionSort);
-        break;
-    case '6':
-        sort(session->lista->nItens, session->lista->vetor, shellSort);
-        break;
-    default:
-        printf("algoritmo não correspondente");
-    }
-    puts("***********************************\n\n");
-}
 
 int main()
 {
@@ -92,7 +63,7 @@ int main()
         printf("6) OK imprimir todas as palavras \n");
         printf("7) OK limpar dicionario\n");
         printf("8) OK imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
-        printf("9) Remover palavra passando palavra como prametro \n");
+        printf("9) OK Remover palavra passando palavra como prametro \n");
 
         printf("q - SAIR\n>");
 
@@ -105,6 +76,17 @@ int main()
         {
             imprimeDicionario(dict, stdout);
             pause(&op);
+        }
+        if(op == '3')
+        {
+            puts("Qual algoritmo de ordenação deseja usar?");
+                puts("1) bubbleSort, 2) insertionSort, 3) heapsort, 4) quickSort, 5) selectionSort, 6 ) shellSort");
+
+            char sortOption[1];
+            scanf("%s", sortOption);
+            imprimeDicionarioOrdenado(dict, sortOption[0]);
+            pause(&op);
+
         }
         if (op == '4')
         {
@@ -137,7 +119,7 @@ int main()
 
                 char sortOption[1];
                 scanf("%s", sortOption);
-                imprimeOrdenado(sortOption, session);
+                imprimeOrdenado(sortOption[0], session);
             }
             else
             {

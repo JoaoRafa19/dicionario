@@ -63,50 +63,47 @@ void insertionSort(int n, VetorCelulaPalavra vetor){
 
 
 }
+/*------------------------------------------------------*/
 
-void Refaz(int Esq, int Dir, VetorCelulaPalavra A)
+
+void swap(CelulaListaPalavra * a, CelulaListaPalavra * b)
 {
-    int j = Esq * 2;
-    CelulaListaPalavra aux = A[Esq];
-    while (j <= Dir){ 
-    if ((j < Dir)&& strcmp(A[j].palavra->string , A[j+1].palavra->string) < 0) j++; 
-    if (strcmp (aux.palavra->string,  A[j].palavra->string) >=0 ) break;
-    A[Esq] = A[j];
-        Esq = j; j = Esq * 2 ;
-    }
-    A[Esq] = aux;
+ 
+    CelulaListaPalavra temp = *a;
+ 
+    *a = *b;
+ 
+    *b = temp;
 }
-
-void Constroi(VetorCelulaPalavra A, int *n)
-{ 
-    int Esq;
-    Esq = *n / 2 + 1;
-    while (Esq > 1)
-    { 
-        Esq--;
-        Refaz(Esq, *n, A);
-    }
-}
-
-void _Heapsort(VetorCelulaPalavra A, int *n)
-{   int Esq, Dir;
-    CelulaListaPalavra aux;
-    Constroi(A, n); /* constroi o heap */
-    Esq = 1; Dir = *n;
-    while (Dir > 1)
-    { /* ordena o vetor */
-        aux = A[1]; A[1] = A[Dir]; A[Dir] = aux;
-        Dir--;
-        Refaz(Esq, Dir, A);
+ 
+void heapify(CelulaListaPalavra arr[], int N, int i)
+{
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+    if (left < N && strcmp(retornaCadeiaDeCaracteres(arr[left].palavra) ,retornaCadeiaDeCaracteres( arr[largest].palavra)) > 0)
+        largest = left;
+    if (right < N &&strcmp(retornaCadeiaDeCaracteres(arr[right].palavra) ,retornaCadeiaDeCaracteres( arr[largest].palavra)) > 0)
+        largest = right;
+ 
+    if (largest != i) {
+        swap(&arr[i], &arr[largest]);
+ 
+        heapify(arr, N, largest);
     }
 }
-
-void heapsort(int n, VetorCelulaPalavra A){
-    int * pn;
-    (*pn) = n;
-    _Heapsort(A, pn);
+ 
+void heapsort(int n, CelulaListaPalavra arr[])
+{
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+ 
+    for (int i = n - 1; i >= 0; i--) {
+        swap(&arr[0], &arr[i]);
+ 
+        heapify(arr, i, 0);
+    }
 }
-
 
 // -----------------------
 
@@ -116,11 +113,13 @@ void particao(int Esq, int Dir, int *i, int *j, VetorCelulaPalavra A)
     CelulaListaPalavra aux, pivo;
     *i = Esq;
     *j = Dir;
-    pivo = A[(*i + *j) / 2];
+    int indicePivo = (*i + *j) / 2;
+    pivo = A[indicePivo];
+    
     do
     {
-        while (strcmp(pivo.palavra->string,  A[*i].palavra->string) > 0) (*i)++;
-        while (strcmp(pivo.palavra->string,  A[*i].palavra->string) < 0) (*j)--;
+        while (strcmp(retornaCadeiaDeCaracteres(pivo.palavra),  retornaCadeiaDeCaracteres(A[*i].palavra)) > 0) (*i)++;
+        while (strcmp(retornaCadeiaDeCaracteres(pivo.palavra),  retornaCadeiaDeCaracteres(A[*j].palavra)) < 0) (*j)--;
         if (*i <= *j)
         {
             aux = A[*i];
@@ -132,21 +131,22 @@ void particao(int Esq, int Dir, int *i, int *j, VetorCelulaPalavra A)
     } while (*i <= *j);
 }
 
-void ordena(int Esq, int Dir, VetorCelulaPalavra A)
-{
-    int i, j;
-    particao(Esq, Dir, &i, &j, A);
-    if (Esq < j)
-        ordena(Esq, j, A);
-    if (i < Dir)
-        ordena(i, Dir, A);
+
+
+void Ordena(int Esq, int Dir, VetorCelulaPalavra A)
+{ 
+int i,j;
+ particao(Esq, Dir, &i, &j, A);
+ if (Esq < j) Ordena(Esq, j, A);
+ if (i < Dir) Ordena(i, Dir, A);
 }
 
-void quickSort(int n, VetorCelulaPalavra vetor)
-{
-    int i, j;
-    ordena(0, n-1, vetor);
+
+void quickSort( int n, VetorCelulaPalavra A)
+{ 
+ Ordena(0, n-1, A); 
 }
+
 // -------------------------------------------
 
 

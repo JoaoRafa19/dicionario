@@ -37,7 +37,7 @@ void imprimePalavraDict(DictSession *palavradict, FILE *output)
     {
 
         fputs("***********************************\n", output);
-        fprintf(output, "Letra:[%c]\n\n", palavradict->letra);
+        fprintf(output, "Letra:[%c numero de palavras:[%d]]\n\n", palavradict->letra, palavradict->lista->nItens);
         imprimelistapalavras(palavradict->lista, output);
         fputs("***********************************\n\n", output);
     }
@@ -176,39 +176,6 @@ void adicionaLinha(Dicionario *dict, int line, String palavraSeparadaPorEspacos)
         palavraSeparadaPorEspacos = strtok(NULL, " ");
     }
 }
-
-/**
- * @warning NÃO UTILIZAR
- * 
- */
-void ordenar(DictSession **primeiro, int tam)
-{
-    int i = 0, retorno;
-    DictSession *anterior, *proximo, *aux, *aux2;
-
-    if (tam > 1)
-    {
-        anterior = *primeiro;
-        proximo = anterior->prox;
-
-        while (proximo != NULL)
-        {
-            retorno = anterior->letra > proximo->letra;
-
-            if (retorno > 0)
-            {
-                aux = anterior;
-                aux2 = proximo;
-                anterior->prox = proximo->prox;
-                proximo->prox = aux;
-            }
-            i++;
-            anterior = anterior->prox;
-            proximo = proximo->prox;
-        }
-    }
-}
-
 /**
  * @brief Cria um dicionario a partir de um arquivo de texto
  *
@@ -265,6 +232,64 @@ void imprimeDicionario(Dicionario *dict, FILE *output)
 
         aux = aux->prox;
     }
+}
+void imprimeDicionarioOrdenado(Dicionario *dict, char option)
+{
+    if (dict->nitens == 0 && (dict->primeiro == dict->ultimo) && (dict->primeiro == NULL))
+    {
+        puts("Dicionario vazio");
+        return;
+    }
+    int i;
+    PPalavraDict aux;
+    aux = dict->primeiro;
+
+    while (true)
+    {
+
+        if (aux->prox == NULL)
+        {
+            imprimeOrdenado(option, aux);
+            break;
+        }
+        imprimeOrdenado(option, aux);
+
+        aux = aux->prox;
+    }
+}
+
+
+void imprimeOrdenado(char option, DictSession *session)
+{
+
+    fputs("***********************************\n", stdout);
+    fprintf(stdout, "Letra:[%c] [%c]\n\n", session->letra, option);
+    
+    switch (option)
+    {
+    case '1':
+        sort(session->lista->nItens, session->lista->vetor, bubbleSort); //ok
+        break;
+    case '2':
+        sort(session->lista->nItens, session->lista->vetor, insertionSort); //ok
+        break;
+    case '3':
+        sort(session->lista->nItens, session->lista->vetor, heapsort);
+        break;
+    case '4':
+        sort(session->lista->nItens, session->lista->vetor, quickSort); //ok
+        break;
+    case '5':
+        sort(session->lista->nItens, session->lista->vetor, selectionSort); //ok
+        break;
+    case '6':
+        sort(session->lista->nItens, session->lista->vetor, shellSort); //ok
+
+        break;
+    default:
+        printf("algoritmo não correspondente");
+    }
+    puts("***********************************\n\n");
 }
 
 /**
@@ -331,7 +356,7 @@ void removePalavraDicionario(Dicionario *dict, String string){
     int i;
     PPalavraDict aux;
     aux = dict->primeiro;
-    PsCelulaListaPalavra aux2;
+    CelulaListaPalavra  *aux2;
 
     while (aux != NULL)
     {

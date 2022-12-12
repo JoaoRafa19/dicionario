@@ -42,7 +42,6 @@ VetorCelulaPalavra criaCelulaListaPalavras(Palavra *palavra)
 {
     VetorCelulaPalavra cell = (VetorCelulaPalavra)malloc(sizeof(CelulaListaPalavra));
     (*cell).palavra = palavra;
-    (*cell).prox = NULL;
 
     return cell;
 }
@@ -69,33 +68,17 @@ void popCelulaListaPalavras(ListaPalavras *lista)
  */
 void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
 {
-    PsCelulaListaPalavra aux;
-    PsCelulaListaPalavra rem;
-    aux = &lista->vetor[0];
-    if(compareString(aux->palavra->string, palavra)){
-        rem = aux;
-        
-        lista->nItens--;
-        free(rem);
-        return;
-    }
-    while (true)
+    
+    for(int i = 0; i<lista->nItens;i++)
+    
     {
-        if (aux->prox == NULL) // eh o ultimo
+        if(compareString(palavra, lista->vetor[i].palavra->string))
         {
-            printf("palavra não encontrada");
-            return;
-        }
-        if(compareString(aux->prox->palavra->string, palavra)){
-            rem = aux->prox;
-            aux->prox = rem->prox;
-            free(rem);
+            for(int j = i; j< lista->nItens; j++){
+                lista->vetor[j] = lista->vetor[j+1];
+            }
             lista->nItens--;
-            return;
         }
-
-        
-        aux = aux->prox;
     }
     
 }

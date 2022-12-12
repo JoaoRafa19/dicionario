@@ -15,7 +15,6 @@ typedef struct sCelulaListaPalavra* PsCelulaListaPalavra;
 typedef struct sCelulaListaPalavra {
 
     Palavra *palavra;
-    PsCelulaListaPalavra prox;
 
 } CelulaListaPalavra;
 

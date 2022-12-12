@@ -22,7 +22,8 @@ typedef struct
 
 
 
-
+void imprimeDicionarioOrdenado(Dicionario *dict, char option);
+void imprimeOrdenado(char option, DictSession *session);
 void inicializaDicionario(Dicionario ** dict);
 int constroiDicionario(String filename, Dicionario *dict);
 void imprimeDicionario (Dicionario *dict, FILE* output);
