@@ -268,22 +268,22 @@ void imprimeOrdenado(char option, DictSession *session)
     switch (option)
     {
     case '1':
-        sort(session->lista->nItens, session->lista->vetor, bubbleSort); //ok
+        sort(session->lista->nItens, session->lista->vetor, bubbleSort); 
         break;
     case '2':
-        sort(session->lista->nItens, session->lista->vetor, insertionSort); //ok
+        sort(session->lista->nItens, session->lista->vetor, insertionSort); 
         break;
     case '3':
         sort(session->lista->nItens, session->lista->vetor, heapsort);
         break;
     case '4':
-        sort(session->lista->nItens, session->lista->vetor, quickSort); //ok
+        sort(session->lista->nItens, session->lista->vetor, quickSort);
         break;
     case '5':
-        sort(session->lista->nItens, session->lista->vetor, selectionSort); //ok
+        sort(session->lista->nItens, session->lista->vetor, selectionSort);
         break;
     case '6':
-        sort(session->lista->nItens, session->lista->vetor, shellSort); //ok
+        sort(session->lista->nItens, session->lista->vetor, shellSort); 
 
         break;
     default:
