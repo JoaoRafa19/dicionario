@@ -336,7 +336,6 @@ void removePalavraDicionario(Dicionario *dict, String string){
     while (aux != NULL)
     {
 
-        printf("%c\n", aux->letra);
         if(aux->letra == string[0]){
             printf("remove %s de  %c \n",string, aux->letra);
             removeCelulaListaPalavra(aux->lista, string);

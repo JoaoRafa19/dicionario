@@ -86,9 +86,7 @@ void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
             printf("palavra não encontrada");
             return;
         }
-        printf("%s == %s", aux->prox->palavra->string, palavra);
         if(compareString(aux->prox->palavra->string, palavra)){
-            puts("remove");
             rem = aux->prox;
             aux->prox = rem->prox;
             free(rem);

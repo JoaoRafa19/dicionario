@@ -30,7 +30,7 @@ void constroiDicionarioMenu(Dicionario *dict, char *filename)
 }
 void pause(char *c)
 {
-    puts("ENTER para continuar");
+    puts("\nENTER para continuar");
     do
     {
         (*c) = getchar();
@@ -84,14 +84,14 @@ int main()
 
         clear();
         puts("Digite o numero referente a opcao desejada e enter para confirmar ('q' para sair)\n");
-        printf("1) Adicionar palavas de um texto ao dicionario a partir de um arquivo\n");
-        printf("2) imprimir dicionario no terminal\n");
+        printf("1) OK Adicionar palavas de um texto ao dicionario a partir de um arquivo\n");
+        printf("2) OK imprimir dicionario no terminal\n");
         printf("3) imprimir dicionario no terminal ordenado \n");
-        printf("4) imprimir seção de uma letra no terminal\n");
-        printf("5) imprimir seção (ORDENADA) de uma letra no terminal\n");
-        printf("6) imprimir todas as palavras \n");
-        printf("7) limpar dicionario\n");
-        printf("8) imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
+        printf("4) OK imprimir seção de uma letra no terminal\n");
+        printf("5) OK imprimir seção (ORDENADA) de uma letra no terminal\n");
+        printf("6) OK imprimir todas as palavras \n");
+        printf("7) OK limpar dicionario\n");
+        printf("8) OK imprimir dicionario em um arquivo de saída \n(ao fim da execuçao por padrão será criado o arquivo output.txt com a saida)\n");
         printf("9) Remover palavra passando palavra como prametro \n");
 
         printf("q - SAIR\n>");
@@ -137,7 +137,6 @@ int main()
 
                 char sortOption[1];
                 scanf("%s", sortOption);
-                printf("%s", sortOption);
                 imprimeOrdenado(sortOption, session);
             }
             else
