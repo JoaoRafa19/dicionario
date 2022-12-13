@@ -29,7 +29,7 @@ typedef struct {
 
 typedef void (*SortFunction)(int,VetorCelulaPalavra, int*, int*);
 
-void sort(int n, VetorCelulaPalavra vetor, SortFunction func);
+void sort(int n, VetorCelulaPalavra vetor, SortFunction func, int* comparacoes, int * movimentacoes, clock_t * clock1, clock_t *clock2);
 void bubbleSort(int n, VetorCelulaPalavra  vetor, int*, int*);
 void insertionSort(int n, VetorCelulaPalavra  vetor, int*, int*);
 void heapsort(int n, VetorCelulaPalavra  vetor, int*, int*);

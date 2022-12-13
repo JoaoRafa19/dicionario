@@ -1,6 +1,7 @@
 #include "dicionario.h"
 #include "string.h"
 #include "stdbool.h"
+#include <time.h>
 
 #define first 0
 /**
@@ -37,7 +38,7 @@ void imprimePalavraDict(DictSession *palavradict, FILE *output)
     {
 
         fputs("***********************************\n", output);
-        fprintf(output, "Letra:[%c numero de palavras:[%d]]\n\n", palavradict->letra, palavradict->lista->nItens);
+        fprintf(output, "Letra:[ %c ] numero de palavras:[%d]\n\n", palavradict->letra, palavradict->lista->nItens);
         imprimelistapalavras(palavradict->lista, output);
         fputs("***********************************\n\n", output);
     }
@@ -241,25 +242,35 @@ void imprimeDicionarioOrdenado(Dicionario *dict, char option)
         return;
     }
     int i;
-    PPalavraDict aux;
+    DictSession * aux;
     aux = dict->primeiro;
+    int movimentacoes = 0;
+    int comparacoes = 0;
+    double total_time = 0; 
+    clock_t clock1;
+    clock_t clock2;
 
     while (true)
     {
 
         if (aux->prox == NULL)
         {
-            imprimeOrdenado(option, aux);
+            imprimeOrdenado(option, aux, &comparacoes, &movimentacoes, &clock1, &clock2);
+            total_time += (clock2 - clock1) * 1000.0 / CLOCKS_PER_SEC;
             break;
         }
-        imprimeOrdenado(option, aux);
-
+        imprimeOrdenado(option, aux, &comparacoes, &movimentacoes, &clock1, &clock2);
+        total_time += (clock2 - clock1) * 1000.0 / CLOCKS_PER_SEC;
         aux = aux->prox;
     }
+    printf("Tempo gasto: %g ms.\n", total_time);
+    printf("Tempo gasto: %f s.\n", total_time / 1000);
+    printf("Numero de comparacoes: %d\n", comparacoes);
+    printf("Numero de movimentacoes: %d\n", movimentacoes);
 }
 
 
-void imprimeOrdenado(char option, DictSession *session)
+void imprimeOrdenado(char option, DictSession *session, int* comparacoes, int * movimentacoes, clock_t * clock1, clock_t *clock2)
 {
 
     fputs("***********************************\n", stdout);
@@ -268,22 +279,22 @@ void imprimeOrdenado(char option, DictSession *session)
     switch (option)
     {
     case '1':
-        sort(session->lista->nItens, session->lista->vetor, bubbleSort); 
+        sort(session->lista->nItens, session->lista->vetor, bubbleSort, comparacoes, movimentacoes, clock1, clock2); 
         break;
     case '2':
-        sort(session->lista->nItens, session->lista->vetor, insertionSort); 
+        sort(session->lista->nItens, session->lista->vetor, insertionSort, comparacoes, movimentacoes, clock1, clock2); 
         break;
     case '3':
-        sort(session->lista->nItens, session->lista->vetor, heapsort);
+        sort(session->lista->nItens, session->lista->vetor, heapsort, comparacoes, movimentacoes, clock1, clock2);
         break;
     case '4':
-        sort(session->lista->nItens, session->lista->vetor, quickSort);
+        sort(session->lista->nItens, session->lista->vetor, quickSort, comparacoes, movimentacoes, clock1, clock2);
         break;
     case '5':
-        sort(session->lista->nItens, session->lista->vetor, selectionSort);
+        sort(session->lista->nItens, session->lista->vetor, selectionSort, comparacoes, movimentacoes, clock1, clock2);
         break;
     case '6':
-        sort(session->lista->nItens, session->lista->vetor, shellSort); 
+        sort(session->lista->nItens, session->lista->vetor, shellSort, comparacoes, movimentacoes, clock1, clock2); 
 
         break;
     default:

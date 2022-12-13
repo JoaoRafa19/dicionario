@@ -119,7 +119,16 @@ int main()
 
                 char sortOption[1];
                 scanf("%s", sortOption);
-                imprimeOrdenado(sortOption[0], session);
+                int movimentacoes = 0;
+                int comparacoes = 0;
+                double total_time = 0; 
+                clock_t clock1;
+                clock_t clock2;
+                imprimeOrdenado(sortOption[0], session, &comparacoes, &movimentacoes, &clock1, &clock2);
+                printf("Tempo gasto: %g ms.\n", total_time);
+                printf("Tempo gasto: %f s.\n", total_time / 1000);
+                printf("Numero de comparacoes: %d\n", comparacoes);
+                printf("Numero de movimentacoes: %d\n", movimentacoes);
             }
             else
             {

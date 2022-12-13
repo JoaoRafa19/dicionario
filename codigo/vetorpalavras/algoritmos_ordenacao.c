@@ -2,69 +2,61 @@
 #include <string.h>
 #include <time.h>
 
-
+void swap(CelulaListaPalavra * a, CelulaListaPalavra * b)
+{
+ 
+    CelulaListaPalavra temp = *a;
+ 
+    *a = *b;
+ 
+    *b = temp;
+}
 
 void functionCopia(VetorCelulaPalavra orig, VetorCelulaPalavra  dest, int tam)
 {
-    
     for(int i = 0; i < tam; i++)
     {
         dest[i] = orig[i];
     }
 }
 
-void bubbleSort(int n, VetorCelulaPalavra vetor, int *mov, int* comp)
+void bubbleSort(int n, VetorCelulaPalavra vetor, int *comp, int* mov)
 {
-    int i, j;
-
-    for (j = 0; j < n - 1; j++,(*comp) ++)
-    {
-        for (i = 0; i < n - 1; i++,(*comp) ++)
-        {   
-            (*comp) ++;
-            if (strcmp(vetor[i].palavra->string , vetor[i + 1].palavra->string) > 0 )
-            {
+      int i, j;
+    for (i = 0; i < n - 1; i++,(*comp)++){
+        for (j = 0; j < n - i - 1; j++,(*comp)++)
+        {
+            (*comp)++;
+            if  (strcmp(vetor[i].palavra->string , vetor[i + 1].palavra->string) > 0 ){
                 (*mov)++;
-                CelulaListaPalavra aux = vetor[i];
-                vetor[i] = vetor[i + 1];
-                vetor[i + 1] = aux;
+                swap(&vetor[j], &vetor[j + 1]);
+                
             }
         }
     }
-    
+
     
 }
 
-void sort(int n, VetorCelulaPalavra vetor, SortFunction func)
+void sort(int n, VetorCelulaPalavra vetor, SortFunction func, int* comparacoes, int * movimentacoes, clock_t * clock1, clock_t *clock2)
 {
     
     VetorCelulaPalavra vetorAordenar = (VetorCelulaPalavra) calloc(n, sizeof(CelulaListaPalavra));
     functionCopia(vetor, vetorAordenar, n);
-    int movimentacoes, comparacoes;
-    clock_t Ticks[2];
-		clock_t Ticks2[2];
-		
-		Ticks[0] = clock();
-		Ticks2[0] = clock();
-		func(n, vetorAordenar, &comparacoes, &movimentacoes);
-
-		Ticks[1] = clock();
-		Ticks2[1] = clock();
-
-        for(int i=0; i< n;i++)
-        {
-            imprimePalavra(vetorAordenar[i].palavra, stdout);
-        }
-
-		double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-		long int Tempo2 = (Ticks[1] - Ticks[0]) / CLOCKS_PER_SEC;
-		fprintf(stdout, "%gms %lds\n", Tempo, Tempo2);
-		printf("Tempo gasto: %g ms.\n", Tempo);
-		printf("Tempo gasto: %ld s.\n", Tempo2);
-        printf("Numero de comparacoes: %d\n", comparacoes);
-        printf("Numero de movimentacoes: %d\n", movimentacoes);
     
     
+    (*clock1) = clock();
+    func(n, vetorAordenar, comparacoes, movimentacoes);
+
+    (*clock2) = clock();
+
+    for(int i=0; i< n;i++)
+    {
+        imprimePalavra(vetorAordenar[i].palavra, stdout);
+    }
+
+    
+    free(vetorAordenar);
 }
 
 
@@ -75,16 +67,10 @@ void sort(int n, VetorCelulaPalavra vetor, SortFunction func)
 void insertionSort(int n, VetorCelulaPalavra vetor, int * comp, int* mov){
     int i,j;
 
-    for (i = 1; i < n; i++) {
-        (*comp++);
+    for (i = 1; i < n; i++, (*comp)++) {
         CelulaListaPalavra key = vetor[i];
-        for(j = i-1; j >= 0 && (strcmp(vetor[j].palavra->string , key.palavra->string) > 0); j--) 
-        {
-            (*comp++);
-            (*mov)++;
+        for(j = i-1; j >= 0 && (strcmp(vetor[j].palavra->string , key.palavra->string) > 0); j--, (*comp)++, (*mov)++ ) 
             vetor[j + 1] = vetor[j];
-        }
-            
         (*mov)++;
         vetor[j + 1] = key;
     }
@@ -94,15 +80,7 @@ void insertionSort(int n, VetorCelulaPalavra vetor, int * comp, int* mov){
 /*------------------------------------------------------*/
 
 
-void swap(CelulaListaPalavra * a, CelulaListaPalavra * b)
-{
- 
-    CelulaListaPalavra temp = *a;
- 
-    *a = *b;
- 
-    *b = temp;
-}
+
  
 void heapify(CelulaListaPalavra arr[], int N, int i, int* comp, int* mov)
 {
@@ -127,10 +105,10 @@ void heapify(CelulaListaPalavra arr[], int N, int i, int* comp, int* mov)
  
 void heapsort(int n, CelulaListaPalavra arr[], int* comp, int* mov)
 {
-    for (int i = n / 2 - 1; i >= 0; i--)
+    for (int i = n / 2 - 1; i >= 0; i--, (*comp)++)
         heapify(arr, n, i, comp, mov);
  
-    for (int i = n - 1; i >= 0; i--) {
+    for (int i = n - 1; i >= 0; i--, (*comp)++) {
         (*mov) ++;
         swap(&arr[0], &arr[i]);
  
@@ -159,7 +137,7 @@ void particao(int Esq, int Dir, int *i, int *j, VetorCelulaPalavra A, int* comp,
         while (strcmp(retornaCadeiaDeCaracteres(pivo.palavra),  retornaCadeiaDeCaracteres(A[*j].palavra)) < 0)
         {
             (*comp)++;
-        (*j)--;
+            (*j)--;
         } 
         if (*i <= *j)
         {
@@ -200,7 +178,7 @@ void selectionSort(int n, VetorCelulaPalavra vetor, int* comp, int* mov){
     for(i=0;i<=n;i++,(*comp)++)
     {
         int _comp = i;
-        for(j = i; j < n; j++)
+        for(j = i; j < n; j++,(*comp)++)
         {   
             (*comp)++;
             if(strcmp(vetor[j].palavra->string,  vetor[_comp].palavra->string)<0){

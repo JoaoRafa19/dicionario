@@ -54,7 +54,6 @@ VetorCelulaPalavra criaCelulaListaPalavras(Palavra *palavra)
 void popCelulaListaPalavras(ListaPalavras *lista)
 {
 
-    PsCelulaListaPalavra aux;
     int nitems = lista->nItens;
     lista->vetor = (VetorCelulaPalavra ) reallocarray(lista->vetor, nitems-1, sizeof(CelulaListaPalavra));
     lista->nItens--;
@@ -93,7 +92,6 @@ void removeCelulaListaPalavra(ListaPalavras *lista, String palavra)
 int verificaPalavraExisteNaLista(ListaPalavras *lista, String string, PsCelulaListaPalavra ref)
 {
 
-    int i;
     for (int i = 0; i < lista->nItens; i++)
     {
 
