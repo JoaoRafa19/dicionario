@@ -255,13 +255,17 @@ void imprimeDicionarioOrdenado(Dicionario *dict, char option)
 
         if (aux->prox == NULL)
         {
+            if(aux->lista->nItens > 0){
+                imprimeOrdenado(option, aux, &comparacoes, &movimentacoes, &clock1, &clock2);
+                total_time += (clock2 - clock1) * 1000.0 / CLOCKS_PER_SEC;
+                break;
+            }
+        }
+        if(aux->lista->nItens > 0 ){
             imprimeOrdenado(option, aux, &comparacoes, &movimentacoes, &clock1, &clock2);
             total_time += (clock2 - clock1) * 1000.0 / CLOCKS_PER_SEC;
-            break;
-        }
-        imprimeOrdenado(option, aux, &comparacoes, &movimentacoes, &clock1, &clock2);
-        total_time += (clock2 - clock1) * 1000.0 / CLOCKS_PER_SEC;
-        aux = aux->prox;
+            aux = aux->prox;
+        } 
     }
     printf("Tempo gasto: %g ms.\n", total_time);
     printf("Tempo gasto: %f s.\n", total_time / 1000);

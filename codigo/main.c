@@ -124,7 +124,9 @@ int main()
                 double total_time = 0; 
                 clock_t clock1;
                 clock_t clock2;
+                if(session->lista->nItens > 0 ){          
                 imprimeOrdenado(sortOption[0], session, &comparacoes, &movimentacoes, &clock1, &clock2);
+                }
                 printf("Tempo gasto: %g ms.\n", total_time);
                 printf("Tempo gasto: %f s.\n", total_time / 1000);
                 printf("Numero de comparacoes: %d\n", comparacoes);
